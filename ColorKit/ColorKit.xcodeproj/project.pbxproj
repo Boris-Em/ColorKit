@@ -8,8 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		A181C8622404728F0008D4B7 /* ColorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A181C8582404728F0008D4B7 /* ColorKit.framework */; };
-		A181C8672404728F0008D4B7 /* ColorKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8662404728F0008D4B7 /* ColorKitTests.swift */; };
 		A181C8692404728F0008D4B7 /* ColorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A181C85B2404728F0008D4B7 /* ColorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A181C873240472D70008D4B7 /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C872240472D70008D4B7 /* Comparison.swift */; };
+		A181C875240474DD0008D4B7 /* RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C874240474DD0008D4B7 /* RGB.swift */; };
+		A181C878240477AD0008D4B7 /* RGBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C877240477AD0008D4B7 /* RGBTests.swift */; };
+		A181C87A2404796F0008D4B7 /* ComparisonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8792404796F0008D4B7 /* ComparisonTests.swift */; };
+		A181C87C240480620008D4B7 /* XYZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C87B240480620008D4B7 /* XYZ.swift */; };
+		A181C87E240483BC0008D4B7 /* XYZTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C87D240483BC0008D4B7 /* XYZTests.swift */; };
+		A181C8932406D4280008D4B7 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8922406D4280008D4B7 /* CGFloatExtensions.swift */; };
+		A181C8952406D4890008D4B7 /* CGFloatExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8942406D4890008D4B7 /* CGFloatExtensionsTests.swift */; };
+		A181C8972406D7A90008D4B7 /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8962406D7A90008D4B7 /* Lab.swift */; };
+		A181C8992406DA500008D4B7 /* LabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8982406DA500008D4B7 /* LabTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +36,18 @@
 		A181C85B2404728F0008D4B7 /* ColorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorKit.h; sourceTree = "<group>"; };
 		A181C85C2404728F0008D4B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A181C8612404728F0008D4B7 /* ColorKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A181C8662404728F0008D4B7 /* ColorKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorKitTests.swift; sourceTree = "<group>"; };
 		A181C8682404728F0008D4B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A181C872240472D70008D4B7 /* Comparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comparison.swift; sourceTree = "<group>"; };
+		A181C874240474DD0008D4B7 /* RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGB.swift; sourceTree = "<group>"; };
+		A181C876240477AD0008D4B7 /* ColorKitTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ColorKitTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		A181C877240477AD0008D4B7 /* RGBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBTests.swift; sourceTree = "<group>"; };
+		A181C8792404796F0008D4B7 /* ComparisonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonTests.swift; sourceTree = "<group>"; };
+		A181C87B240480620008D4B7 /* XYZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYZ.swift; sourceTree = "<group>"; };
+		A181C87D240483BC0008D4B7 /* XYZTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XYZTests.swift; sourceTree = "<group>"; };
+		A181C8922406D4280008D4B7 /* CGFloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
+		A181C8942406D4890008D4B7 /* CGFloatExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtensionsTests.swift; sourceTree = "<group>"; };
+		A181C8962406D7A90008D4B7 /* Lab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab.swift; sourceTree = "<group>"; };
+		A181C8982406DA500008D4B7 /* LabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +90,13 @@
 		A181C85A2404728F0008D4B7 /* ColorKit */ = {
 			isa = PBXGroup;
 			children = (
+				A181C8912406CF970008D4B7 /* Extensions */,
 				A181C85B2404728F0008D4B7 /* ColorKit.h */,
 				A181C85C2404728F0008D4B7 /* Info.plist */,
+				A181C872240472D70008D4B7 /* Comparison.swift */,
+				A181C874240474DD0008D4B7 /* RGB.swift */,
+				A181C87B240480620008D4B7 /* XYZ.swift */,
+				A181C8962406D7A90008D4B7 /* Lab.swift */,
 			);
 			path = ColorKit;
 			sourceTree = "<group>";
@@ -80,10 +104,23 @@
 		A181C8652404728F0008D4B7 /* ColorKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				A181C8662404728F0008D4B7 /* ColorKitTests.swift */,
 				A181C8682404728F0008D4B7 /* Info.plist */,
+				A181C877240477AD0008D4B7 /* RGBTests.swift */,
+				A181C87D240483BC0008D4B7 /* XYZTests.swift */,
+				A181C8982406DA500008D4B7 /* LabTests.swift */,
+				A181C8792404796F0008D4B7 /* ComparisonTests.swift */,
+				A181C8942406D4890008D4B7 /* CGFloatExtensionsTests.swift */,
+				A181C876240477AD0008D4B7 /* ColorKitTests-Bridging-Header.h */,
 			);
 			path = ColorKitTests;
+			sourceTree = "<group>";
+		};
+		A181C8912406CF970008D4B7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A181C8922406D4280008D4B7 /* CGFloatExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,9 +185,11 @@
 				TargetAttributes = {
 					A181C8572404728F0008D4B7 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					A181C8602404728F0008D4B7 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -195,6 +234,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A181C873240472D70008D4B7 /* Comparison.swift in Sources */,
+				A181C87C240480620008D4B7 /* XYZ.swift in Sources */,
+				A181C8932406D4280008D4B7 /* CGFloatExtensions.swift in Sources */,
+				A181C8972406D7A90008D4B7 /* Lab.swift in Sources */,
+				A181C875240474DD0008D4B7 /* RGB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A181C8672404728F0008D4B7 /* ColorKitTests.swift in Sources */,
+				A181C87E240483BC0008D4B7 /* XYZTests.swift in Sources */,
+				A181C8992406DA500008D4B7 /* LabTests.swift in Sources */,
+				A181C87A2404796F0008D4B7 /* ComparisonTests.swift in Sources */,
+				A181C8952406D4890008D4B7 /* CGFloatExtensionsTests.swift in Sources */,
+				A181C878240477AD0008D4B7 /* RGBTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +388,7 @@
 		A181C86D2404728F0008D4B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 67V847367C;
@@ -356,6 +405,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boris.emorine.ColorKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -364,6 +414,7 @@
 		A181C86E2404728F0008D4B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 67V847367C;
@@ -388,6 +439,8 @@
 		A181C8702404728F0008D4B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67V847367C;
 				INFOPLIST_FILE = ColorKitTests/Info.plist;
@@ -398,6 +451,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boris.emorine.ColorKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ColorKitTests/ColorKitTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -406,6 +461,8 @@
 		A181C8712404728F0008D4B7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 67V847367C;
 				INFOPLIST_FILE = ColorKitTests/Info.plist;
@@ -416,6 +473,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.boris.emorine.ColorKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ColorKitTests/ColorKitTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
