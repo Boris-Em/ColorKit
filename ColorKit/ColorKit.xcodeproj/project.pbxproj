@@ -19,6 +19,8 @@
 		A181C8952406D4890008D4B7 /* CGFloatExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8942406D4890008D4B7 /* CGFloatExtensionsTests.swift */; };
 		A181C8972406D7A90008D4B7 /* Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8962406D7A90008D4B7 /* Lab.swift */; };
 		A181C8992406DA500008D4B7 /* LabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C8982406DA500008D4B7 /* LabTests.swift */; };
+		A181C89B2407F5340008D4B7 /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C89A2407F5340008D4B7 /* Hex.swift */; };
+		A181C89D2407FC690008D4B7 /* HexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C89C2407FC690008D4B7 /* HexTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		A181C8942406D4890008D4B7 /* CGFloatExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtensionsTests.swift; sourceTree = "<group>"; };
 		A181C8962406D7A90008D4B7 /* Lab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab.swift; sourceTree = "<group>"; };
 		A181C8982406DA500008D4B7 /* LabTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabTests.swift; sourceTree = "<group>"; };
+		A181C89A2407F5340008D4B7 /* Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
+		A181C89C2407FC690008D4B7 /* HexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 				A181C874240474DD0008D4B7 /* RGB.swift */,
 				A181C87B240480620008D4B7 /* XYZ.swift */,
 				A181C8962406D7A90008D4B7 /* Lab.swift */,
+				A181C89A2407F5340008D4B7 /* Hex.swift */,
 			);
 			path = ColorKit;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 				A181C877240477AD0008D4B7 /* RGBTests.swift */,
 				A181C87D240483BC0008D4B7 /* XYZTests.swift */,
 				A181C8982406DA500008D4B7 /* LabTests.swift */,
+				A181C89C2407FC690008D4B7 /* HexTests.swift */,
 				A181C8792404796F0008D4B7 /* ComparisonTests.swift */,
 				A181C8942406D4890008D4B7 /* CGFloatExtensionsTests.swift */,
 				A181C876240477AD0008D4B7 /* ColorKitTests-Bridging-Header.h */,
@@ -237,6 +243,7 @@
 				A181C873240472D70008D4B7 /* Comparison.swift in Sources */,
 				A181C87C240480620008D4B7 /* XYZ.swift in Sources */,
 				A181C8932406D4280008D4B7 /* CGFloatExtensions.swift in Sources */,
+				A181C89B2407F5340008D4B7 /* Hex.swift in Sources */,
 				A181C8972406D7A90008D4B7 /* Lab.swift in Sources */,
 				A181C875240474DD0008D4B7 /* RGB.swift in Sources */,
 			);
@@ -247,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A181C87E240483BC0008D4B7 /* XYZTests.swift in Sources */,
+				A181C89D2407FC690008D4B7 /* HexTests.swift in Sources */,
 				A181C8992406DA500008D4B7 /* LabTests.swift in Sources */,
 				A181C87A2404796F0008D4B7 /* ComparisonTests.swift in Sources */,
 				A181C8952406D4890008D4B7 /* CGFloatExtensionsTests.swift in Sources */,
