@@ -47,9 +47,9 @@ class ComparisonTests: XCTestCase {
     }
     
     func testRandomEuclidean() {
-        let color1 = UIColor(red: 0.3, green: 0.5, blue: 0.7, alpha: 1.0)
-        let color2 = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 1.0)
-        
+        let color1 = UIColor(red: 76.5 / 255.0, green: 127.5 / 255.0, blue: 178.5 / 255.0, alpha: 1.0)
+        let color2 = UIColor(red: 127.5 / 255.0, green: 25.5 / 255.0, blue: 51.0 / 255.0, alpha: 1.0)
+
         let difference = color1.difference(from: color2, using: .euclidean).associatedValue
         XCTAssertEqual(difference, 171.06)
         
@@ -104,8 +104,8 @@ class ComparisonTests: XCTestCase {
     }
     
     func testRandomCIE76() {
-        let color1 = UIColor(red: 0.3, green: 0.5, blue: 0.7, alpha: 1.0)
-        let color2 = UIColor(red: 0.5, green: 0.1, blue: 0.2, alpha: 1.0)
+        let color1 = UIColor(red: 76.5 / 255.0, green: 127.5 / 255.0, blue: 178.5 / 255.0, alpha: 1.0)
+        let color2 = UIColor(red: 127.5 / 255.0, green: 25.5 / 255.0, blue: 51.0 / 255.0, alpha: 1.0)
         
         let difference = color1.difference(from: color2, using: .CIE76).associatedValue
         XCTAssertEqual(difference, 67.55)
@@ -124,5 +124,63 @@ class ComparisonTests: XCTestCase {
         let reversedDifference = color2.difference(from: color1, using: .CIE76).associatedValue
         XCTAssertEqual(reversedDifference, difference)
     }
+    
+    // MARK: - CIE94
+    
+    func testWhiteWhiteCIE94() {
+        let color1 = UIColor.white
+        let color2 = UIColor.white
+        
+        let difference = color1.difference(from: color2, using: .CIE94).associatedValue
+        XCTAssertEqual(difference, 0)
+        
+        let reversedDifference = color2.difference(from: color1, using: .CIE94).associatedValue
+        XCTAssertEqual(reversedDifference, difference)
+    }
+    
+    func testPurplePurpleCIE94() {
+        let color1 = UIColor.purple
+        let color2 = UIColor.purple
+        
+        let difference = color1.difference(from: color2, using: .CIE94).associatedValue
+        XCTAssertEqual(difference, 0)
+        
+        let reversedDifference = color2.difference(from: color1, using: .CIE94).associatedValue
+        XCTAssertEqual(reversedDifference, difference)
+    }
+    
+    func testWhiteBlackCIE94() {
+        let color1 = UIColor.white
+        let color2 = UIColor.black
+        
+        let difference = color1.difference(from: color2, using: .CIE94).associatedValue
+        XCTAssertEqual(difference, 100.0)
+        
+        let reversedDifference = color2.difference(from: color1, using: .CIE94).associatedValue
+        XCTAssertEqual(reversedDifference, difference)
+    }
+    
+    func testRandomCIE94() {
+        let color1 = UIColor(red: 76.5 / 255.0, green: 127.5 / 255.0, blue: 178.5 / 255.0, alpha: 1.0)
+        let color2 = UIColor(red: 127.5 / 255.0, green: 25.5 / 255.0, blue: 51.0 / 255.0, alpha: 1.0)
+
+        let difference = color1.difference(from: color2, using: .CIE94).associatedValue
+        XCTAssertEqual(difference, 48.31)
+        
+        let reversedDifference = color2.difference(from: color1, using: .CIE94).associatedValue
+        XCTAssertEqual(reversedDifference, 43.99)
+    }
+    
+    func testCloseCIE94() {
+        let color1 = UIColor(red: 196.0 / 255.0, green: 199.0 / 255.0, blue: 46.0 / 255.0, alpha: 1.0)
+        let color2 = UIColor(red: 171.0 / 255.0, green: 173.0 / 255.0, blue: 50.0 / 255.0, alpha: 1.0)
+
+        let difference = color1.difference(from: color2, using: .CIE94).associatedValue
+        XCTAssertEqual(difference, 9.5)
+        
+        let reversedDifference = color2.difference(from: color1, using: .CIE94).associatedValue
+        XCTAssertEqual(reversedDifference, 9.6)
+    }
+
 
 }
