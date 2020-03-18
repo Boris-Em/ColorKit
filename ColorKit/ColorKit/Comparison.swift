@@ -32,25 +32,6 @@ extension UIColor {
         /// The two colors are exact opposite.
         case opposite(CGFloat)
         
-        var associatedValue: CGFloat {
-            switch self {
-            case .indentical(let value):
-                return value
-            case .similar(let value):
-                return value
-            case .close(let value):
-                return value
-            case .near(let value):
-                return value
-            case .different(let value):
-                return value
-            case .far(let value):
-                return value
-            case .opposite(let value):
-                return value
-            }
-        }
-                
         init(value: CGFloat) {
             if value == 0 {
                 self = .indentical(value)
@@ -68,6 +49,20 @@ extension UIColor {
                 self = .opposite(value)
             }
         }
+        
+        var associatedValue: CGFloat {
+            switch self {
+            case .indentical(let value),
+                 .similar(let value),
+                 .close(let value),
+                 .near(let value),
+                 .different(let value),
+                 .far(let value),
+                 .opposite(let value):
+                 return value
+            }
+        }
+                
     }
     
     public enum DeltaEFormula {
