@@ -37,8 +37,8 @@ extension UIColor {
     
     /// Contrast ratios can range from 1 to 21 (commonly written 1:1 to 21:1).
     public func contrastRatio(with color: UIColor) -> ContrastRatioResult {
-        let l1 = max(color.relativeLuminance, self.relativeLuminance)
-        let l2 = min(color.relativeLuminance, self.relativeLuminance)
+        let l1 = max(color.relativeLuminance, relativeLuminance)
+        let l2 = min(color.relativeLuminance, relativeLuminance)
 
         let contrastRatio = (l1 + 0.05) / (l2 + 0.05)
         return ContrastRatioResult(value: contrastRatio.rounded(.toNearestOrEven, precision: 100))
