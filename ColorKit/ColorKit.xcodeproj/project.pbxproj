@@ -27,6 +27,7 @@
 		A1BC6937241C335B00E53FB9 /* RelativeLuminanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */; };
 		A1BC6939241C372600E53FB9 /* ContrastRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC6938241C372600E53FB9 /* ContrastRatio.swift */; };
 		A1BC693B241C39D600E53FB9 /* ContrastRatioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC693A241C39D600E53FB9 /* ContrastRatioTests.swift */; };
+		A1FDCB7B2461F16400741DD6 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FDCB7A2461F16400741DD6 /* Random.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeLuminanceTests.swift; sourceTree = "<group>"; };
 		A1BC6938241C372600E53FB9 /* ContrastRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastRatio.swift; sourceTree = "<group>"; };
 		A1BC693A241C39D600E53FB9 /* ContrastRatioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastRatioTests.swift; sourceTree = "<group>"; };
+		A1FDCB7A2461F16400741DD6 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				A181C87B240480620008D4B7 /* XYZ.swift */,
 				A181C8962406D7A90008D4B7 /* Lab.swift */,
 				A181C89A2407F5340008D4B7 /* Hex.swift */,
+				A1FDCB7A2461F16400741DD6 /* Random.swift */,
 				A1BC6934241C328400E53FB9 /* RelativeLuminance.swift */,
 				A1BC6938241C372600E53FB9 /* ContrastRatio.swift */,
 				A14F98612422776A001E727C /* ComplementaryColor.swift */,
@@ -260,6 +263,7 @@
 			files = (
 				A1BC6935241C328400E53FB9 /* RelativeLuminance.swift in Sources */,
 				A181C873240472D70008D4B7 /* Comparison.swift in Sources */,
+				A1FDCB7B2461F16400741DD6 /* Random.swift in Sources */,
 				A181C87C240480620008D4B7 /* XYZ.swift in Sources */,
 				A14F98622422776A001E727C /* ComplementaryColor.swift in Sources */,
 				A1BC6939241C372600E53FB9 /* ContrastRatio.swift in Sources */,
