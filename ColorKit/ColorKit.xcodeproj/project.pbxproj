@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A14F98622422776A001E727C /* ComplementaryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14F98612422776A001E727C /* ComplementaryColor.swift */; };
 		A14F9864242277D7001E727C /* ComplementaryColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14F9863242277D7001E727C /* ComplementaryColorTests.swift */; };
+		A16BA2192473034C00E4E826 /* Purple_Square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A16BA2182473034C00E4E826 /* Purple_Square.jpg */; };
+		A16BA21B247304D100E4E826 /* Black_White_Square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A16BA21A247304D100E4E826 /* Black_White_Square.jpg */; };
 		A181C8622404728F0008D4B7 /* ColorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A181C8582404728F0008D4B7 /* ColorKit.framework */; };
 		A181C8692404728F0008D4B7 /* ColorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A181C85B2404728F0008D4B7 /* ColorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A181C873240472D70008D4B7 /* Comparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = A181C872240472D70008D4B7 /* Comparison.swift */; };
@@ -27,6 +29,12 @@
 		A1BC6937241C335B00E53FB9 /* RelativeLuminanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */; };
 		A1BC6939241C372600E53FB9 /* ContrastRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC6938241C372600E53FB9 /* ContrastRatio.swift */; };
 		A1BC693B241C39D600E53FB9 /* ContrastRatioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC693A241C39D600E53FB9 /* ContrastRatioTests.swift */; };
+		A1C4509E246EC347001EC796 /* AverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C4509D246EC347001EC796 /* AverageColor.swift */; };
+		A1C450A0246EC5BE001EC796 /* AverageColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C4509F246EC5BE001EC796 /* AverageColorTests.swift */; };
+		A1C450A3246ECA25001EC796 /* Green_Square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1C450A2246ECA25001EC796 /* Green_Square.jpg */; };
+		A1DE07D0246ED0DD0030CE7D /* Blue_Green_Square.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1DE07CF246ED0DD0030CE7D /* Blue_Green_Square.jpg */; };
+		A1DE07D22472944F0030CE7D /* Test_Image_1.Jpeg in Resources */ = {isa = PBXBuildFile; fileRef = A1DE07D12472944F0030CE7D /* Test_Image_1.Jpeg */; };
+		A1DE07D42472A9D40030CE7D /* Blue_Square_1x1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A1DE07D32472A9D40030CE7D /* Blue_Square_1x1.jpg */; };
 		A1FDCB7B2461F16400741DD6 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FDCB7A2461F16400741DD6 /* Random.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +51,8 @@
 /* Begin PBXFileReference section */
 		A14F98612422776A001E727C /* ComplementaryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementaryColor.swift; sourceTree = "<group>"; };
 		A14F9863242277D7001E727C /* ComplementaryColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementaryColorTests.swift; sourceTree = "<group>"; };
+		A16BA2182473034C00E4E826 /* Purple_Square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Purple_Square.jpg; sourceTree = "<group>"; };
+		A16BA21A247304D100E4E826 /* Black_White_Square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Black_White_Square.jpg; sourceTree = "<group>"; };
 		A181C8582404728F0008D4B7 /* ColorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ColorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A181C85B2404728F0008D4B7 /* ColorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorKit.h; sourceTree = "<group>"; };
 		A181C85C2404728F0008D4B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,6 +75,12 @@
 		A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeLuminanceTests.swift; sourceTree = "<group>"; };
 		A1BC6938241C372600E53FB9 /* ContrastRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastRatio.swift; sourceTree = "<group>"; };
 		A1BC693A241C39D600E53FB9 /* ContrastRatioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastRatioTests.swift; sourceTree = "<group>"; };
+		A1C4509D246EC347001EC796 /* AverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColor.swift; sourceTree = "<group>"; };
+		A1C4509F246EC5BE001EC796 /* AverageColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AverageColorTests.swift; sourceTree = "<group>"; };
+		A1C450A2246ECA25001EC796 /* Green_Square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Green_Square.jpg; sourceTree = "<group>"; };
+		A1DE07CF246ED0DD0030CE7D /* Blue_Green_Square.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blue_Green_Square.jpg; sourceTree = "<group>"; };
+		A1DE07D12472944F0030CE7D /* Test_Image_1.Jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Test_Image_1.Jpeg; sourceTree = "<group>"; };
+		A1DE07D32472A9D40030CE7D /* Blue_Square_1x1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Blue_Square_1x1.jpg; sourceTree = "<group>"; };
 		A1FDCB7A2461F16400741DD6 /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,6 +136,7 @@
 				A1BC6934241C328400E53FB9 /* RelativeLuminance.swift */,
 				A1BC6938241C372600E53FB9 /* ContrastRatio.swift */,
 				A14F98612422776A001E727C /* ComplementaryColor.swift */,
+				A1C4509D246EC347001EC796 /* AverageColor.swift */,
 			);
 			path = ColorKit;
 			sourceTree = "<group>";
@@ -127,6 +144,7 @@
 		A181C8652404728F0008D4B7 /* ColorKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				A1C450A1246EC9B1001EC796 /* Resources */,
 				A181C8682404728F0008D4B7 /* Info.plist */,
 				A181C877240477AD0008D4B7 /* RGBTests.swift */,
 				A181C87D240483BC0008D4B7 /* XYZTests.swift */,
@@ -134,10 +152,11 @@
 				A181C89C2407FC690008D4B7 /* HexTests.swift */,
 				A181C8792404796F0008D4B7 /* ComparisonTests.swift */,
 				A181C8942406D4890008D4B7 /* CGFloatExtensionsTests.swift */,
-				A181C876240477AD0008D4B7 /* ColorKitTests-Bridging-Header.h */,
 				A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */,
 				A1BC693A241C39D600E53FB9 /* ContrastRatioTests.swift */,
 				A14F9863242277D7001E727C /* ComplementaryColorTests.swift */,
+				A1C4509F246EC5BE001EC796 /* AverageColorTests.swift */,
+				A181C876240477AD0008D4B7 /* ColorKitTests-Bridging-Header.h */,
 			);
 			path = ColorKitTests;
 			sourceTree = "<group>";
@@ -148,6 +167,19 @@
 				A181C8922406D4280008D4B7 /* CGFloatExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A1C450A1246EC9B1001EC796 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A1C450A2246ECA25001EC796 /* Green_Square.jpg */,
+				A1DE07CF246ED0DD0030CE7D /* Blue_Green_Square.jpg */,
+				A1DE07D32472A9D40030CE7D /* Blue_Square_1x1.jpg */,
+				A1DE07D12472944F0030CE7D /* Test_Image_1.Jpeg */,
+				A16BA2182473034C00E4E826 /* Purple_Square.jpg */,
+				A16BA21A247304D100E4E826 /* Black_White_Square.jpg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,6 +283,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1DE07D0246ED0DD0030CE7D /* Blue_Green_Square.jpg in Resources */,
+				A1C450A3246ECA25001EC796 /* Green_Square.jpg in Resources */,
+				A1DE07D22472944F0030CE7D /* Test_Image_1.Jpeg in Resources */,
+				A1DE07D42472A9D40030CE7D /* Blue_Square_1x1.jpg in Resources */,
+				A16BA21B247304D100E4E826 /* Black_White_Square.jpg in Resources */,
+				A16BA2192473034C00E4E826 /* Purple_Square.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +300,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1BC6935241C328400E53FB9 /* RelativeLuminance.swift in Sources */,
+				A1C4509E246EC347001EC796 /* AverageColor.swift in Sources */,
 				A181C873240472D70008D4B7 /* Comparison.swift in Sources */,
 				A1FDCB7B2461F16400741DD6 /* Random.swift in Sources */,
 				A181C87C240480620008D4B7 /* XYZ.swift in Sources */,
@@ -283,6 +322,7 @@
 				A14F9864242277D7001E727C /* ComplementaryColorTests.swift in Sources */,
 				A181C8992406DA500008D4B7 /* LabTests.swift in Sources */,
 				A1BC693B241C39D600E53FB9 /* ContrastRatioTests.swift in Sources */,
+				A1C450A0246EC5BE001EC796 /* AverageColorTests.swift in Sources */,
 				A1BC6937241C335B00E53FB9 /* RelativeLuminanceTests.swift in Sources */,
 				A181C87A2404796F0008D4B7 /* ComparisonTests.swift in Sources */,
 				A181C8952406D4890008D4B7 /* CGFloatExtensionsTests.swift in Sources */,
@@ -433,6 +473,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ColorKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,6 +482,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boris.emorine.ColorKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -459,6 +501,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = ColorKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -467,6 +510,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.boris.emorine.ColorKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
