@@ -9,24 +9,35 @@
 import UIKit
 import CoreImage
 
-enum ImageColorError: Error {
-    /// The `CIImage` instance could not be created.
-    case CIImageFailure
-    
-    /// An error happened during the creation of the image after applying the filter.
-    case outputImageFailure
-    
-    var localizedDescription: String {
-        switch self {
-        case .CIImageFailure:
-            return "Failed to get a `CIImage` instance."
-        case .outputImageFailure:
-            return "Could not get the output image from the filter."
-        }
-    }
-}
 
 extension UIImage {
+    
+    enum ImageColorError: Error {
+        /// The `CIImage` instance could not be created.
+        case CIImageFailure
+        
+        /// The `CGImage` instance could not be created.
+        case CGImageFailure
+        
+        /// Failed to get the pixel data from the `CGImage` instance.
+        case CGImageDataFailure
+        
+        /// An error happened during the creation of the image after applying the filter.
+        case outputImageFailure
+        
+        var localizedDescription: String {
+            switch self {
+            case .CIImageFailure:
+                return "Failed to get a `CIImage` instance."
+            case .CGImageFailure:
+                return "Failed to get a `CGImage` instance."
+            case .CGImageDataFailure:
+                return "Failed to get image data."
+            case .outputImageFailure:
+                return "Could not get the output image from the filter."
+            }
+        }
+    }
     
     /// Returns the average color of the image.
     public func averageColor() throws -> UIColor {
