@@ -10,7 +10,8 @@ import UIKit
 
 extension UIColor {
     
-    public enum ColorComparaisonResult {
+    public enum ColorComparaisonResult: Comparable {
+        
         /// There is no difference between the two colors.
         case indentical(CGFloat)
         
@@ -61,6 +62,10 @@ extension UIColor {
                  .opposite(let value):
                  return value
             }
+        }
+        
+        public static func < (lhs: UIColor.ColorComparaisonResult, rhs: UIColor.ColorComparaisonResult) -> Bool {
+            return lhs.associatedValue < rhs.associatedValue
         }
                 
     }

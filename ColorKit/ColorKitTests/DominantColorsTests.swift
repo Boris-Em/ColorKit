@@ -22,6 +22,7 @@ class DominantColorsTests: XCTestCase {
             return
         }
         XCTAssertLessThan(distance.associatedValue, AverageColorTests.tolerance)
+        XCTAssertEqual(dominantColors.first?.frequency, 1.0)
     }
     
     func testBlackWhiteImage() throws {
@@ -34,6 +35,9 @@ class DominantColorsTests: XCTestCase {
         XCTAssertTrue(dominantColors.contains(UIColor(red: 0, green: 0, blue: 0, alpha: 1)))
         XCTAssertTrue(dominantColors.contains(UIColor(red: 1, green: 1, blue: 1, alpha: 1)))
         verifySorted(colorsFrequencies: colorFrequencies)
+        
+        XCTAssertEqual(colorFrequencies.first?.frequency, 0.5)
+        XCTAssertEqual(colorFrequencies[1].frequency, 0.5)
     }
     
     func testRedBlueGreenImage() throws {
@@ -75,30 +79,20 @@ class DominantColorsTests: XCTestCase {
         verifySorted(colorsFrequencies: colorFrequencies)
     }
     
-    func testRealImage() throws {
-        let bundle = Bundle(for: type(of: self))
-        let image = UIImage(named: "Test_Image_3.jpg", in: bundle, compatibleWith: nil)!
-        
-        measure {
-            _ = try! image.dominantColors(with: .high)
-        }
-        
-    }
-    
     func verifySorted(colorsFrequencies: [UIImage.ColorFrequency]) {
-        var previousCount: Int?
+        var previousCount: CGFloat?
         
         colorsFrequencies.forEach { (colorFrequency) in
             guard let oldCount = previousCount else {
-                previousCount = colorFrequency.count
+                previousCount = colorFrequency.frequency
                 return
             }
             
-            if oldCount < colorFrequency.count {
+            if oldCount < colorFrequency.frequency {
                 XCTFail("The order of the color frenquecy is not correct.")
             }
             
-            previousCount = colorFrequency.count
+            previousCount = colorFrequency.frequency
         }
     }
     

@@ -23,7 +23,7 @@ extension UIImage {
         var prefferedImageArea: CGFloat? {
             switch self {
             case .low:
-                return 100
+                return 1_000
             case .fair:
                 return 10_000
             case .high:
@@ -51,14 +51,34 @@ extension UIImage {
         }
     }
     
-    /// A simple structure containing a color, and a count.
-    public struct ColorFrequency {
-        let color: UIColor
-        let count: Int
+    /// A simple structure containing a color, and a frequency.
+    public class ColorFrequency: CustomStringConvertible {
+        public let color: UIColor
+        
+        /// The frequency of the color.
+        /// That is, how much it is present.
+        public var frequency: CGFloat
+        
+        public var description: String {
+            return "Color: \(color) - Frequency: \(frequency)"
+        }
+        
+        init(color: UIColor, count: CGFloat) {
+            self.frequency = count
+            self.color = color
+        }
     }
     
-    /// Returns the dominant colors of the image, via an ordered array where the first element is the most common color on the image.
+    /// Computes the dominant colors of the image.
+    /// - Parameters:
+    ///   - quality: The quality used to determine the dominant colors. A higher quality will yield more accurate results, but will also take longer to compute.
+    /// - Returns: The dominant colors as an ordered array of `ColorFrequency` instances, where the first element is the most common one. The frequency is represented as a percentage ranging from 0 to 1.
     public func dominantColors(with quality: DominantColorQuality = .fair) throws -> [ColorFrequency] {
+        
+        // ------
+        // Step 1: Resize the image based on the requested quality
+        // ------
+        
         let targetSize = quality.targetSize(for: resolution)
         
         let resizedImage = resize(to: targetSize)
@@ -70,6 +90,10 @@ extension UIImage {
         guard let data = CFDataGetBytePtr(cfData) else {
             throw ImageColorError.CGImageDataFailure
         }
+        
+        // ------
+        // Step 2: Add each pixel to a NSCountedSet. This will give us a count for each color.
+        // ------
         
         let colorsCountedSet = NSCountedSet(capacity: Int(targetSize.area))
         
@@ -84,14 +108,17 @@ extension UIImage {
                 let index = (cgImage.width * yCoordonate + xCoordonate) * 4
                 
                 // Let's make sure there is enough alpha.
-                guard data[index + 3] > 200 else { continue }
+                guard data[index + 3] > 150 else { continue }
                 
                 let pixelColor = RGB(R: data[index + 0], G: data[index + 1], B:  data[index + 2])
                 colorsCountedSet.add(pixelColor)
             }
         }
+        
+        // ------
+        // Step 3: Remove colors that are barely present on the image.
+        // ------
 
-        // Let's only keep colors that are at least present in 0.01% of the area
         let minCountThreshold = Int(targetSize.area * (0.01 / 100.0))
         
         let filteredColorsCountMap = colorsCountedSet.compactMap { (rgb) -> ColorFrequency? in
@@ -103,14 +130,85 @@ extension UIImage {
             
             let rgb = rgb as! RGB
 
-            return ColorFrequency(color: UIColor(red: CGFloat(rgb.R) / 255.0, green: CGFloat(rgb.G) / 255.0, blue: CGFloat(rgb.B) / 255.0, alpha: 1.0), count: count)
+            return ColorFrequency(color: UIColor(red: CGFloat(rgb.R) / 255.0, green: CGFloat(rgb.G) / 255.0, blue: CGFloat(rgb.B) / 255.0, alpha: 1.0), count: CGFloat(count))
         }
         
-        let sortedColorsCountMap = filteredColorsCountMap.sorted { (lhs, rhs) -> Bool in
-            return lhs.count > rhs.count
+        // ------
+        // Step 4: Sort the remaning colors by frequency.
+        // ------
+        
+        let sortedColorsFrequencies = filteredColorsCountMap.sorted { (lhs, rhs) -> Bool in
+            return lhs.frequency > rhs.frequency
         }
         
-        return sortedColorsCountMap
+        // ------
+        // Step 5: Only keep the most frequent colors.
+        // ------
+        
+        let maxNumberOfColors = 500
+        let colorFrequencies = sortedColorsFrequencies.prefix(maxNumberOfColors)
+        
+        // ------
+        // Step 6: Combine similar colors together.
+        // ------
+        
+        /// The main dominant colors on the picture.
+        var dominantColors = [ColorFrequency]()
+        
+        /// The score that needs to be met to consider two colors similar.
+        let colorDifferenceScoreThreshold: CGFloat = 10.0
+        
+        // Combines colors that are similar.
+        for colorFrequency in colorFrequencies {
+            var bestMatchScore: CGFloat?
+            var bestMatchColorFrequency: ColorFrequency?
+            for dominantColor in dominantColors {
+                let differenceScore = colorFrequency.color.difference(from: dominantColor.color, using: .CIE76).associatedValue
+                if differenceScore < bestMatchScore ?? CGFloat(Int.max) {
+                    bestMatchScore = differenceScore
+                    bestMatchColorFrequency = dominantColor
+                }
+            }
+            
+            if let bestMatchScore = bestMatchScore, bestMatchScore < colorDifferenceScoreThreshold {
+                bestMatchColorFrequency!.frequency += 1
+            } else {
+                dominantColors.append(colorFrequency)
+            }
+        }
+        
+        // ------
+        // Step 7: Again, limit the number of colors we keep, this time drastically.
+        // ------
+        
+        // We only keep the first few dominant colors.
+        let dominantColorsMaxCount = 8
+        dominantColors = Array(dominantColors.prefix(dominantColorsMaxCount))
+        
+        // ------
+        // Step 8: Sort again on frequencies because the order may have changed because we combined colors.
+        // ------
+        
+        dominantColors = dominantColors.sorted(by: { (lhs, rhs) -> Bool in
+            return lhs.frequency > rhs.frequency
+        })
+        
+        // ------
+        // Step 9: Calculate the frequency of colors as a percentage.
+        // ------
+        
+        /// The total count of colors
+        let dominantColorsTotalCount = dominantColors.reduce(into: 0) { (result, colorFrequency) in
+            result += colorFrequency.frequency
+        }
+        
+        dominantColors = dominantColors.map({ (colorFrequency) -> ColorFrequency in
+            let percentage = (100.0 / (dominantColorsTotalCount / colorFrequency.frequency) / 100.0).rounded(.up, precision: 100)
+            
+            return ColorFrequency(color: colorFrequency.color, count: percentage)
+        })
+        
+        return dominantColors
     }
     
 }
