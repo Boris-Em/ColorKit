@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     
-    public enum ColorComparaisonResult: Comparable {
+    public enum ColorDifferenceResult: Comparable {
         
         /// There is no difference between the two colors.
         case indentical(CGFloat)
@@ -64,7 +64,7 @@ extension UIColor {
             }
         }
         
-        public static func < (lhs: UIColor.ColorComparaisonResult, rhs: UIColor.ColorComparaisonResult) -> Bool {
+        public static func < (lhs: UIColor.ColorDifferenceResult, rhs: UIColor.ColorDifferenceResult) -> Bool {
             return lhs.associatedValue < rhs.associatedValue
         }
                 
@@ -77,22 +77,22 @@ extension UIColor {
         case CIEDE2000
     }
     
-    public func difference(from color: UIColor, using formula: DeltaEFormula = .CIE94) -> ColorComparaisonResult {
+    public func difference(from color: UIColor, using formula: DeltaEFormula = .CIE94) -> ColorDifferenceResult {
         switch formula {
         case .euclidean:
             let differenceValue = sqrt(pow(self.red255 - color.red255, 2) + pow(self.green255 - color.green255, 2) + pow(self.blue255 - color.blue255, 2))
             let roundedDifferenceValue = differenceValue.rounded(.toNearestOrEven, precision: 100)
-            return ColorComparaisonResult(value: roundedDifferenceValue)
+            return ColorDifferenceResult(value: roundedDifferenceValue)
         case .CIE76:
             let differenceValue = sqrt(pow(color.L - self.L, 2) + pow(color.a - self.a, 2) + pow(color.b - self.b, 2))
             let roundedDifferenceValue = differenceValue.rounded(.toNearestOrEven, precision: 100)
-            return ColorComparaisonResult(value: roundedDifferenceValue)
+            return ColorDifferenceResult(value: roundedDifferenceValue)
         case .CIE94:
             let differenceValue = UIColor.deltaECIE94(lhs: self, rhs: color)
             let roundedDifferenceValue = differenceValue.rounded(.toNearestOrEven, precision: 100)
-            return ColorComparaisonResult(value: roundedDifferenceValue)
+            return ColorDifferenceResult(value: roundedDifferenceValue)
         default:
-            return ColorComparaisonResult(value: -1)
+            return ColorDifferenceResult(value: -1)
         }
     }
     
