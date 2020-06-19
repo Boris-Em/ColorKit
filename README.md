@@ -37,3 +37,16 @@ let colorDifference = UIColor.black.difference(from: .white, using: .CIE94)
 ```
 
 More information about color difference can be found [here](https://en.wikipedia.org/wiki/Color_difference).
+
+### Dominant Colors
+**ColorKit** makes it easy to find the dominant colors of an image. It returns a color palette of the most common colors on the image.
+
+```swift
+let dominantColors = image.dominantColors()
+```
+
+<p align="center">
+    <img width="300px" src="Assets/dominant_colors.jpg">
+</p>
+
+### Average Color
