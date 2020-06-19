@@ -8,10 +8,29 @@
 
 import UIKit
 
+/// A simple structure containing a color, and a frequency.
+public class ColorFrequency: CustomStringConvertible {
+    
+    /// A simple `UIColor` instance.
+    public let color: UIColor
+    
+    /// The frequency of the color.
+    /// That is, how much it is present.
+    public var frequency: CGFloat
+    
+    public var description: String {
+        return "Color: \(color) - Frequency: \(frequency)"
+    }
+    
+    init(color: UIColor, count: CGFloat) {
+        self.frequency = count
+        self.color = color
+    }
+}
 
 extension UIImage {
     
-    /// How precise should the dominant color algorithm be.
+    /// Reoresents how precise should the dominant color algorithm be.
     /// The lower the quality, the faster the algorithm.
     /// `.best` should only be reserved for very small images.
     public enum DominantColorQuality {
@@ -51,29 +70,28 @@ extension UIImage {
         }
     }
     
-    /// A simple structure containing a color, and a frequency.
-    public class ColorFrequency: CustomStringConvertible {
-        public let color: UIColor
-        
-        /// The frequency of the color.
-        /// That is, how much it is present.
-        public var frequency: CGFloat
-        
-        public var description: String {
-            return "Color: \(color) - Frequency: \(frequency)"
+    /// Attempts to computes the dominant colors of the image.
+    /// This is not the absolute dominent colors, but instead colors that are similar are groupped together.
+    /// This avoid having to deal with many shades of the same colors, which are frequent when dealing with compression artifacts (jpeg etc.).
+    /// - Parameters:
+    ///   - quality: The quality used to determine the dominant colors. A higher quality will yield more accurate results, but will be slower.
+    /// - Returns: The dominant colors as an ordered array of `UIColor` instances, where the first element is the most common one.
+    public func dominantColors(with quality: DominantColorQuality = .fair) throws -> [UIColor] {
+        let dominantColorFrequencies = try self.dominantColorFrequencies(with: quality)
+        let dominantColors = dominantColorFrequencies.map { (colorFrequency) -> UIColor in
+            return colorFrequency.color
         }
         
-        init(color: UIColor, count: CGFloat) {
-            self.frequency = count
-            self.color = color
-        }
+        return dominantColors
     }
     
-    /// Computes the dominant colors of the image.
+    /// Attempts to computes the dominant colors of the image.
+    /// This is not the absolute dominent colors, but instead colors that are similar are groupped together.
+    /// This avoid having to deal with many shades of the same colors, which are frequent when dealing with compression artifacts (jpeg etc.).
     /// - Parameters:
-    ///   - quality: The quality used to determine the dominant colors. A higher quality will yield more accurate results, but will also take longer to compute.
+    ///   - quality: The quality used to determine the dominant colors. A higher quality will yield more accurate results, but will be slower.
     /// - Returns: The dominant colors as an ordered array of `ColorFrequency` instances, where the first element is the most common one. The frequency is represented as a percentage ranging from 0 to 1.
-    public func dominantColors(with quality: DominantColorQuality = .fair) throws -> [ColorFrequency] {
+    public func dominantColorFrequencies(with quality: DominantColorQuality = .fair) throws -> [ColorFrequency] {
         
         // ------
         // Step 1: Resize the image based on the requested quality

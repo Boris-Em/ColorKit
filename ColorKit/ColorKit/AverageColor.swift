@@ -39,7 +39,7 @@ extension UIImage {
         }
     }
     
-    /// Returns the average color of the image.
+    /// Computes the average color of the image.
     public func averageColor() throws -> UIColor {
         guard let ciImage = CIImage(image: self) else {
             throw ImageColorError.CIImageFailure
