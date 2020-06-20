@@ -10,9 +10,20 @@ import UIKit
 
 extension UIColor {
     
+    /// An enumeration which groups contrast ratios based on their readability.
+    /// This follows the  Web Content Accessibility Guidelines (WCAG) 2.0.
     public enum ContrastRatioResult {
+        /// The contrast ratio between is enough for most people to distinguish the two colors.
+        /// It can be used as text / background.
         case acceptable(CGFloat)
+        
+        /// The contrast ratio is not big enough for most people to distinguish the two colors.
+        /// It should only be used for large text / background.
         case acceptableForLargeText(CGFloat)
+        
+        /// The contrast ratio between the two colors is low.
+        /// It will be difficult for most to distinguish the two colors easily.
+        /// Do not use these two colors as text / background.
         case low(CGFloat)
         
         init(value: CGFloat) {
@@ -35,6 +46,7 @@ extension UIColor {
         }
     }
     
+    /// Computes the contrast ratio between the current color instance, and the one passed in.
     /// Contrast ratios can range from 1 to 21 (commonly written 1:1 to 21:1).
     public func contrastRatio(with color: UIColor) -> ContrastRatioResult {
         let l1 = max(color.relativeLuminance, relativeLuminance)

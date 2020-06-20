@@ -1,5 +1,7 @@
 # ColorKit
 
+<p align="center"><img src="Assets/colorkit_banner.jpg"/></p>
+
 **ColorKit** is your companion to work with colors on iOS.
 
 - [Features](#features)
@@ -9,12 +11,30 @@
 
 ## Features
 
+### Dominant Colors
+**ColorKit** makes it easy to find the dominant colors of an image. It returns a color palette of the most common colors on the image.
+
+```swift
+let dominantColors = try image.dominantColors()
+```
+
+<p align="center">
+    <img src="Assets/dominant_colors.jpg">
+</p>
+
+### Average Color
+
+To compute the average color of an image, simply call the `averageColor` function on a `UIImage` instance.
+```swift
+let averageColor = try image.averageColor()
+```
+
 ### Color Difference
 
 **ColorKit** makes it a breaze to compare how close two colors look from each other.
 
 ```swift
-let colorDifference = UIColor.black.difference(from: .white) 
+let colorDifference = UIColor.green.difference(from: .white) 
 // Opposite
 ```
 
@@ -24,7 +44,7 @@ This is because RGB is not perceptually uniform.
 Here is an example highlighting the limitations of using the RGB color model to compare colors.
 
 <p align="center">
-    <img width="300px" src="Assets/color_difference.jpg">
+    <img src="Assets/color_difference.jpg">
 </p>
 
 As you can see, the difference between the two greens (top) is considered greater than the distance between the pink and gray (bottom).   
@@ -33,20 +53,45 @@ This obiously does not match the expectation of the human eye.
 Thankfully, **ColorKit** provides algorithms that make it possible to compare colors just like the human eye would: **CIE76** and **CIE94**.
 
 ```swift
-let colorDifference = UIColor.black.difference(from: .white, using: .CIE94) 
+let colorDifference = UIColor.green.difference(from: .white, using: .CIE94) 
 ```
 
-More information about color difference can be found [here](https://en.wikipedia.org/wiki/Color_difference).
+More generic information about color difference can be found [here](https://en.wikipedia.org/wiki/Color_difference).
 
-### Dominant Colors
-**ColorKit** makes it easy to find the dominant colors of an image. It returns a color palette of the most common colors on the image.
+### Contrast Ratio
 
+To calculate the contrast ratio between two colors, simply use the `contrastRatio` function.
 ```swift
-let dominantColors = image.dominantColors()
+let contrastRatio = UIColor.green.contrastRatio(with: UIColor.white)
 ```
+The contrast ratio is particularly important when displaying text.
+To ensure that it's readable by everyone, **ColorKit** makes it easy for you to follow the accessibility guidelines set by WCAG 2.
 
-<p align="center">
-    <img width="300px" src="Assets/dominant_colors.jpg">
-</p>
+### Color Space Conversions
 
-### Average Color
+**ColorKit** assists you when translating a color from a color space to another.
+They're simply supported as an extension on `UIColor`.  
+**CIELAB**, **XYZ** and **CMYK** are supported.
+
+
+### More
+
+There is a lot more that **ColorKit** is capable of.
+Here is a short list of examples:
+- Working with Hex color codes
+```swift
+let hexValue = UIColor.green.hex
+let color = UIColor(hex: "eb4034")
+```
+- Generating random colors.
+```swift
+let randomColor = UIColor.random()
+```
+- Calculating the relative luminance of a color
+```swift
+let relativeLuminance = UIColor.green.relativeLuminance
+```
+- Calculating complementary colors
+```swift
+let complementaryColor = UIColor.green.complementaryColor
+```

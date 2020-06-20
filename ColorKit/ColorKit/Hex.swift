@@ -10,6 +10,7 @@ import UIKit
 
 extension UIColor {
     
+    /// Convenience initializer with hexadecimal values.
     public convenience init?(hex: String) {
         let hexString = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         
@@ -33,6 +34,7 @@ extension UIColor {
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }
     
+    /// The hexadecimal value of the color.
     public var hex: String {
         let rgb: Int = (Int)(self.red * 255) << 16 | (Int)(self.green * 255) << 8 | (Int)(self.blue * 255) << 0
         return String(format: "#%06x", rgb)

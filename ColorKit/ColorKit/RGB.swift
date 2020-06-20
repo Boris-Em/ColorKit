@@ -18,18 +18,22 @@ extension UIColor {
     
     // MARK: - Pulic
     
+    /// The red (R) channel of the RGB color space.
     public var red: CGFloat {
         CIColor(color: self).red
     }
     
+    /// The green (G) channel of the RGB color space.
     public var green: CGFloat {
         CIColor(color: self).green
     }
     
+    /// The blue (B) channel of the RGB color space.
     public var blue: CGFloat {
         CIColor(color: self).blue
     }
     
+    /// The alpha (a) channel of the RGBa color space.
     public var alpha: CGFloat {
         CIColor(color: self).alpha
     }

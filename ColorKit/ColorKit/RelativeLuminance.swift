@@ -10,8 +10,9 @@ import UIKit
 
 extension UIColor {
     
-    /// Calculates the relative luminance of the color.
+    /// Computes the relative luminance of the color.
     /// This assume that the color is using the sRGB color space.
+    /// This is the relative brightness, normalized where 0 is black and 1 is white.
     public var relativeLuminance: CGFloat {
         func toLinear(colorAttribute: CGFloat) -> CGFloat {
             if colorAttribute <= 0.03928 {

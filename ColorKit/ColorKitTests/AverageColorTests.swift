@@ -40,8 +40,8 @@ class AverageColorTests: XCTestCase {
         let image = UIImage(named: "Black_White_Square.jpg", in: bundle, compatibleWith: nil)!
         let averageColor = try image.averageColor()
         
-        let expectedPurple = UIColor(red: 188.0 / 255.0, green: 188.0 / 255.0, blue: 188.0 / 255.0, alpha: 1.0)
-        let distance = averageColor.difference(from: expectedPurple)
+        let expectedGray = UIColor(red: 188.0 / 255.0, green: 188.0 / 255.0, blue: 188.0 / 255.0, alpha: 1.0)
+        let distance = averageColor.difference(from: expectedGray)
         XCTAssertLessThan(distance.associatedValue, AverageColorTests.tolerance)
     }
     

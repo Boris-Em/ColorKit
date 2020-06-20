@@ -40,16 +40,19 @@ struct XYZCalculator {
 
 extension UIColor {
     
+    /// The X value of the XYZ color space.
     public var X: CGFloat {
         let XYZ = XYZCalculator.convert(rgb: self.rgb)
         return XYZ.X
     }
     
+    /// The Y value of the XYZ color space.
     public var Y: CGFloat {
         let XYZ = XYZCalculator.convert(rgb: self.rgb)
         return XYZ.Y
     }
     
+    /// The Z value of the XYZ color space.
     public var Z: CGFloat {
         let XYZ = XYZCalculator.convert(rgb: self.rgb)
         return XYZ.Z
