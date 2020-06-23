@@ -70,7 +70,7 @@ To ensure that it's readable by everyone, **ColorKit** makes it easy for you to 
 ### Color Space Conversions
 
 **ColorKit** assists you when translating a color from a color space to another.
-They're simply supported as an extension on `UIColor`.  
+They're simply supported as extensions on `UIColor`.  
 **CIELAB**, **XYZ** and **CMYK** are supported.
 
 
