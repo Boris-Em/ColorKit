@@ -22,6 +22,8 @@ let dominantColors = try image.dominantColors()
     <img src="Assets/dominant_colors.jpg">
 </p>
 
+---
+
 ### Average Color
 
 To compute the average color of an image, simply call the `averageColor` function on a `UIImage` instance.
@@ -29,13 +31,17 @@ To compute the average color of an image, simply call the `averageColor` functio
 let averageColor = try image.averageColor()
 ```
 
+---
+
 ### Color Difference
 
-**ColorKit** makes it a breaze to compare how close two colors look from each other.
+Perceptual color difference / comparaison is a common problem of color science.  
+It simply consists of calculating how different two colors look from each other, to the human eye.
+
+**ColorKit** makes it a breaze to compare two colors.
 
 ```swift
-let colorDifference = UIColor.green.difference(from: .white) 
-// Opposite
+let colorDifference = UIColor.green.difference(from: .white) // 120.34
 ```
 
 While this may seem trivial, simply using the RGB color model often yields non-accurate results for human perception.
@@ -47,7 +53,7 @@ Here is an example highlighting the limitations of using the RGB color model to 
     <img src="Assets/color_difference.jpg">
 </p>
 
-As you can see, the difference between the two greens (top) is considered greater than the distance between the pink and gray (bottom).   
+As you can see, the difference between the two greens (top) is considered greater than the difference between the pink and gray colors (bottom).   
 This obiously does not match the expectation of the human eye.
 
 Thankfully, **ColorKit** provides algorithms that make it possible to compare colors just like the human eye would: **CIE76** and **CIE94**.
@@ -58,6 +64,8 @@ let colorDifference = UIColor.green.difference(from: .white, using: .CIE94)
 
 More generic information about color difference can be found [here](https://en.wikipedia.org/wiki/Color_difference).
 
+---
+
 ### Contrast Ratio
 
 To calculate the contrast ratio between two colors, simply use the `contrastRatio` function.
@@ -67,12 +75,15 @@ let contrastRatio = UIColor.green.contrastRatio(with: UIColor.white)
 The contrast ratio is particularly important when displaying text.
 To ensure that it's readable by everyone, **ColorKit** makes it easy for you to follow the accessibility guidelines set by WCAG 2.
 
+---
+
 ### Color Space Conversions
 
 **ColorKit** assists you when translating a color from a color space to another.
 They're simply supported as extensions on `UIColor`.  
 **CIELAB**, **XYZ** and **CMYK** are supported.
 
+---
 
 ### More
 
