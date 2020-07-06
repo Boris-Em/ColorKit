@@ -14,24 +14,24 @@ extension UIImage {
     
     enum ImageColorError: Error {
         /// The `CIImage` instance could not be created.
-        case CIImageFailure
+        case ciImageFailure
         
         /// The `CGImage` instance could not be created.
-        case CGImageFailure
+        case cgImageFailure
         
         /// Failed to get the pixel data from the `CGImage` instance.
-        case CGImageDataFailure
+        case cgImageDataFailure
         
         /// An error happened during the creation of the image after applying the filter.
         case outputImageFailure
         
         var localizedDescription: String {
             switch self {
-            case .CIImageFailure:
+            case .ciImageFailure:
                 return "Failed to get a `CIImage` instance."
-            case .CGImageFailure:
+            case .cgImageFailure:
                 return "Failed to get a `CGImage` instance."
-            case .CGImageDataFailure:
+            case .cgImageDataFailure:
                 return "Failed to get image data."
             case .outputImageFailure:
                 return "Could not get the output image from the filter."
@@ -42,7 +42,7 @@ extension UIImage {
     /// Computes the average color of the image.
     public func averageColor() throws -> UIColor {
         guard let ciImage = CIImage(image: self) else {
-            throw ImageColorError.CIImageFailure
+            throw ImageColorError.ciImageFailure
         }
         
         guard let areaAverageFilter = CIFilter(name: "CIAreaAverage") else {

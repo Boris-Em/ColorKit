@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreImage
 
 /// A simple structure containing a color, and a frequency.
 public class ColorFrequency: CustomStringConvertible {
@@ -30,7 +31,16 @@ public class ColorFrequency: CustomStringConvertible {
 
 extension UIImage {
     
-    /// Reoresents how precise should the dominant color algorithm be.
+    public enum DominantColorAlgorithm {
+        
+        /// Finds the dominant colors of an image by iterating, grouping and sorting its pixels.
+        case iterative
+        
+        /// Finds the dominant colors of an image by using using a k-means clustering algorithm.
+        case kMeansClustering
+    }
+    
+    /// Reoresents how precise the dominant color algorithm should be.
     /// The lower the quality, the faster the algorithm.
     /// `.best` should only be reserved for very small images.
     public enum DominantColorQuality {
@@ -49,6 +59,19 @@ extension UIImage {
                 return 100_000
             case .best:
                 return nil
+            }
+        }
+        
+        var kMeansInputPasses: Int {
+            switch self {
+            case .low:
+                return 1
+            case .fair:
+                return 10
+            case .high:
+                return 15
+            case .best:
+                return 20
             }
         }
         
@@ -72,17 +95,24 @@ extension UIImage {
     
     /// Attempts to computes the dominant colors of the image.
     /// This is not the absolute dominent colors, but instead colors that are similar are groupped together.
-    /// This avoid having to deal with many shades of the same colors, which are frequent when dealing with compression artifacts (jpeg etc.).
+    /// This avoids having to deal with many shades of the same colors, which are frequent when dealing with compression artifacts (jpeg etc.).
     /// - Parameters:
     ///   - quality: The quality used to determine the dominant colors. A higher quality will yield more accurate results, but will be slower.
-    /// - Returns: The dominant colors as an ordered array of `UIColor` instances, where the first element is the most common one.
-    public func dominantColors(with quality: DominantColorQuality = .fair) throws -> [UIColor] {
-        let dominantColorFrequencies = try self.dominantColorFrequencies(with: quality)
-        let dominantColors = dominantColorFrequencies.map { (colorFrequency) -> UIColor in
-            return colorFrequency.color
+    ///   - algorithm: The algorithm used to determine the dominant colors. When using a k-means algorithm (`kMeansClustering`), a `CIKMeans` CIFilter isused. Unfortunately this filter doesn't work on the simulator.
+    /// - Returns: The dominant colors as array of `UIColor` instances. When using the `.iterative` algorithm, this array is ordered where the first color is the most dominant one.
+    public func dominantColors(with quality: DominantColorQuality = .fair, algorithm: DominantColorAlgorithm = .iterative) throws -> [UIColor] {
+        switch algorithm {
+        case .iterative:
+            let dominantColorFrequencies = try self.dominantColorFrequencies(with: quality)
+            let dominantColors = dominantColorFrequencies.map { (colorFrequency) -> UIColor in
+                return colorFrequency.color
+            }
+            
+            return dominantColors
+        case .kMeansClustering:
+            let dominantcolors = try kMeansClustering(with: quality)
+            return dominantcolors
         }
-        
-        return dominantColors
     }
     
     /// Attempts to computes the dominant colors of the image.
@@ -101,12 +131,12 @@ extension UIImage {
         
         let resizedImage = resize(to: targetSize)
         guard let cgImage = resizedImage.cgImage else {
-            throw ImageColorError.CGImageFailure
+            throw ImageColorError.cgImageFailure
         }
         
         let cfData = cgImage.dataProvider!.data
         guard let data = CFDataGetBytePtr(cfData) else {
-            throw ImageColorError.CGImageDataFailure
+            throw ImageColorError.cgImageDataFailure
         }
         
         // ------
@@ -225,6 +255,41 @@ extension UIImage {
             
             return ColorFrequency(color: colorFrequency.color, count: percentage)
         })
+        
+        return dominantColors
+    }
+    
+    private func kMeansClustering(with quality: DominantColorQuality) throws -> [UIColor] {
+        guard let ciImage = CIImage(image: self) else {
+            throw ImageColorError.ciImageFailure
+        }
+        let kMeansFilter = CIFilter(name: "CIKMeans")!
+        
+        let clusterCount = 8
+
+        kMeansFilter.setValue(ciImage, forKey: kCIInputImageKey)
+        kMeansFilter.setValue(CIVector(cgRect: ciImage.extent), forKey: "inputExtent")
+        kMeansFilter.setValue(clusterCount, forKey: "inputCount")
+        kMeansFilter.setValue(quality.kMeansInputPasses, forKey: "inputPasses")
+        kMeansFilter.setValue(NSNumber(value: true), forKey: "inputPerceptual")
+
+        guard var outputImage = kMeansFilter.outputImage else {
+            throw ImageColorError.outputImageFailure
+        }
+        
+        outputImage = outputImage.settingAlphaOne(in: outputImage.extent)
+        
+        let context = CIContext()
+        var bitmap = [UInt8](repeating: 0, count: 4 * clusterCount)
+        
+        context.render(outputImage, toBitmap: &bitmap, rowBytes: 4 * clusterCount, bounds: outputImage.extent, format: CIFormat.RGBA8, colorSpace: ciImage.colorSpace!)
+        
+        var dominantColors = [UIColor]()
+
+        for i in 0..<clusterCount {
+            let color = UIColor(red: CGFloat(bitmap[i * 4 + 0]) / 255.0, green: CGFloat(bitmap[i * 4 + 1]) / 255.0, blue: CGFloat(bitmap[i * 4 + 2]) / 255.0, alpha: CGFloat(bitmap[i * 4 + 3]) / 255.0)
+            dominantColors.append(color)
+        }
         
         return dominantColors
     }
