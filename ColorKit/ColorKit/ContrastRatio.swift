@@ -30,7 +30,7 @@ extension UIColor {
             if value >= 4.5 {
                 self = .acceptable(value)
             } else if value >= 3.0 {
-                self = .acceptable(value)
+                self = .acceptableForLargeText(value)
             } else {
                 self = .low(value)
             }
