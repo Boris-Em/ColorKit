@@ -53,8 +53,8 @@ Here is an example highlighting the limitations of using the RGB color model to 
     <img src="Assets/color_difference_deltaE_RGB.jpg">
 </p>
 
-As you can see, the difference between the two greens (left) is considered greater than the difference between the pink and gray colors (right). In other words, the two pink and gray look more similar than the two greens.  
-This obiously does not match the expectation of the human eye.
+As you can see, the difference between the two greens (left) is considered greater than the difference between the pink and gray colors (right). In other words, the pink and gray are considered to look more similar than the two greens.  
+This obviously does not match the expectation of the human eye.
 
 Thankfully, **ColorKit** provides algorithms that make it possible to compare colors just like the human eye would: **CIE76**, **CIE94** and **CIE2000**.
 
