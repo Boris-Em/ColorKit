@@ -33,10 +33,10 @@ let averageColor = try image.averageColor()
 
 ---
 
-### Color Difference
+### Color Difference (DeltaE)
 
 Perceptual color difference / comparaison is a common problem of color science.  
-It simply consists of calculating how different two colors look from each other, to the human eye.
+It simply consists of calculating how different two colors look from each other, to the human eye. This is commonly referenced as the DeltaE.
 
 **ColorKit** makes it a breaze to compare two colors.
 
@@ -50,19 +50,27 @@ This is because RGB is not perceptually uniform.
 Here is an example highlighting the limitations of using the RGB color model to compare colors.
 
 <p align="center">
-    <img src="Assets/color_difference.jpg">
+    <img src="Assets/color_difference_deltaE_RGB.jpg">
 </p>
 
-As you can see, the difference between the two greens (top) is considered greater than the difference between the pink and gray colors (bottom).   
+As you can see, the difference between the two greens (left) is considered greater than the difference between the pink and gray colors (right). In other words, the two pink and gray look more similar than the two greens.  
 This obiously does not match the expectation of the human eye.
 
-Thankfully, **ColorKit** provides algorithms that make it possible to compare colors just like the human eye would: **CIE76** and **CIE94**.
+Thankfully, **ColorKit** provides algorithms that make it possible to compare colors just like the human eye would: **CIE76**, **CIE94** and **CIE2000**.
 
 ```swift
 let colorDifference = UIColor.green.difference(from: .white, using: .CIE94) 
 ```
 
-More generic information about color difference can be found [here](https://en.wikipedia.org/wiki/Color_difference).
+Here is the same example as above, using the **CIE94** algorithm.
+
+<p align="center">
+    <img src="Assets/color_difference_deltaE_CIE94.jpg">
+</p>
+
+The **CIE94** algorithm successfuly realizes that the two greens (left) look closer from each other than the pink and gray (right) do.
+
+More information about color difference can be found [here](https://en.wikipedia.org/wiki/Color_difference).
 
 ---
 

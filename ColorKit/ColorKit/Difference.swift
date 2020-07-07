@@ -68,6 +68,7 @@ extension UIColor {
     /// @see https://en.wikipedia.org/wiki/Color_difference
     public enum DeltaEFormula {
         /// The euclidean algorithm is the simplest and fastest one, but will yield results that are unexpected to the human eye. Especially in the green range.
+        /// It simply calculates the euclidean distance in the RGB color space.
         case euclidean
         
         /// The `CIE76`algorithm is fast and yields acceptable results in most scenario.
