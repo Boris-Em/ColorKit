@@ -6,7 +6,7 @@
 
 - [Features](#features)
 - [Installation](#installation)
-- [Contributin](#contributin)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Features

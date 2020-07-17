@@ -18,6 +18,7 @@ class DominantColorsViewController: UIViewController {
         didSet {
             guard oldValue != currentImage else { return }
             do {
+                averageColor = try currentImage.averageColor()
                 dominantColors = try currentImage.dominantColorFrequencies()
             } catch {
                 fatalError(error.localizedDescription)
@@ -30,6 +31,8 @@ class DominantColorsViewController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    private var averageColor: UIColor!
     
     private static let images = [
         UIImage(named: "Dominant_Color_Image_1")!,
@@ -96,16 +99,57 @@ class DominantColorsViewController: UIViewController {
 
 extension DominantColorsViewController: UITableViewDataSource {
     
+    enum DominantColorsTableViewSection: Int, CaseIterable {
+        case dominantColor = 0
+        case averageColor = 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return DominantColorsTableViewSection.allCases.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        dominantColors.count
+        guard let section = DominantColorsTableViewSection(rawValue: section) else {
+            fatalError("Could not map section to `DominantColorsTableViewSection` enum")
+        }
+        
+        switch section {
+        case .dominantColor:
+            return dominantColors.count
+        case .averageColor:
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let section = DominantColorsTableViewSection(rawValue: indexPath.section) else {
+            fatalError("Could not map section to `DominantColorsTableViewSection` enum")
+        }
+        
         let cell = UITableViewCell()
-        let colorFrequency = dominantColors[indexPath.row]
-        cell.backgroundColor = colorFrequency.color
-        cell.textLabel?.text = "\(colorFrequency.frequency)"
+        
+        switch section {
+        case .dominantColor:
+            let colorFrequency = dominantColors[indexPath.row]
+            cell.backgroundColor = colorFrequency.color
+            cell.textLabel?.text = "\(colorFrequency.frequency)"
+        case .averageColor:
+            cell.backgroundColor = averageColor
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let section = DominantColorsTableViewSection(rawValue: section) else {
+            fatalError("Could not map section to `DominantColorsTableViewSection` enum")
+        }
+
+        switch section {
+        case .dominantColor:
+            return "Dominant Colors"
+        case .averageColor:
+            return "Average Color"
+        }
     }
     
 }
