@@ -1,5 +1,5 @@
 //
-//  DominantColorsViewController.swift
+//  ImageColorsViewController.swift
 //  ColorKitSampleApp
 //
 //  Created by Boris Emorine on 5/31/20.
@@ -13,6 +13,7 @@ class ImageColorsViewController: UIViewController {
     
     @IBOutlet private weak var scrollView: UIScrollView!
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet weak var pageControl: UIPageControl!
     
     private var currentImage: UIImage! {
         didSet {
@@ -88,12 +89,32 @@ class ImageColorsViewController: UIViewController {
         }
         
         NSLayoutConstraint.activate(constraints)
+        pageControl.numberOfPages = imageViews.count
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         scrollView.contentSize = CGSize(width: scrollView.bounds.width * CGFloat(ImageColorsViewController.images.count), height: scrollView.bounds.height)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let colorDetailViewController = segue.destination as? ColorDetailViewController,
+            let selectedIndexPath = tableView.indexPathForSelectedRow,
+            let section = DominantColorsTableViewSection(rawValue: selectedIndexPath.section) else {
+                fatalError("Failed to get requirements for segue.")
+        }
+
+        var color: UIColor
+        switch section {
+        case .dominantColor:
+            color = dominantColors[selectedIndexPath.row].color
+        case .averageColor:
+            color = averageColor
+        }
+        
+        colorDetailViewController.color = color
+        tableView.deselectRow(at: selectedIndexPath, animated: true)
     }
 
 }
@@ -166,6 +187,7 @@ extension ImageColorsViewController: UITableViewDelegate {
 extension ImageColorsViewController: UIScrollViewDelegate {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        guard !(scrollView is UITableView) else { return }
         let numberOfPages = imageViews.count
         let currentPage = Int(scrollView.contentOffset.x / (scrollView.contentSize.width / CGFloat(numberOfPages)))
         guard let currentImage = imageViews[currentPage].image else {
@@ -173,6 +195,7 @@ extension ImageColorsViewController: UIScrollViewDelegate {
         }
         
         self.currentImage = currentImage
+        pageControl.currentPage = currentPage
     }
     
 }
