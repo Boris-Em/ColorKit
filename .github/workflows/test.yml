@@ -11,5 +11,7 @@ jobs:
     name: Test
     runs-on: macOS-latest
     steps:
+      - name: Move to right directory
+        run: cd /ColorKit
       - name: Run tests
         run: xcodebuild test -scheme ColorKit -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 8"
