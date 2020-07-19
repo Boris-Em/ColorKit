@@ -16,6 +16,6 @@ jobs:
       - name: cd
         run: cd ColorKit
       - name: lsagain
-        run: ls
+        run: ls ColorKit/ColorKitTests/Resources/
       - name: Run tests
         run: xcodebuild test -scheme ColorKit -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11"
