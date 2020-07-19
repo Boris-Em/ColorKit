@@ -12,8 +12,6 @@ jobs:
     runs-on: macOS-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v1
-      - name: Move to right directory
-        run: ls
+        uses: actions/checkout@v2
       - name: Run tests
-        run: xcodebuild test -scheme ColorKit -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 8"
+        run: xcodebuild test -scheme ColorKit -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11"
