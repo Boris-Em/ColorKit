@@ -1,0 +1,15 @@
+name: Test
+
+on:
+  push:
+    branches: [ master, feature/gitub-actions ]
+  pull_request:
+    branches: [ master, feature/gitub-actions ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: macOS-latest
+    steps: 
+      - name: Run tests
+      - run: xcodebuild test -project -scheme ColorKit -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 8"
