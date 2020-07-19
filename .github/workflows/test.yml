@@ -11,6 +11,8 @@ jobs:
     name: Test
     runs-on: macOS-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v1
       - name: Move to right directory
         run: ls
       - name: Run tests
