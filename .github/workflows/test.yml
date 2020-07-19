@@ -11,6 +11,10 @@ jobs:
     name: Test
     runs-on: macOS-latest
     steps:
+      - name: cd
+        run: cd ColorKit
+      - name: lsagain
+        run: ls    
       - name: Checkout repository
         uses: actions/checkout@v2
       - name: Run tests
