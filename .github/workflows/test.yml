@@ -2,9 +2,9 @@ name: Test
 
 on:
   push:
-    branches: [ master, feature/gitub-actions ]
+    branches: [ master ]
   pull_request:
-    branches: [ master, feature/gitub-actions ]
+    branches: [ master ]
 
 jobs:
   test:
