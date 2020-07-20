@@ -4,6 +4,8 @@
 
 **ColorKit** is your companion to work with colors on iOS.
 
+![Test](https://github.com/Boris-Em/ColorKit/workflows/Test/badge.svg?branch=master)
+
 - [Features](#features)
 - [Installation](#installation)
 - [Contributing](#contributing)
