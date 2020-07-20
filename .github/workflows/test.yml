@@ -1,0 +1,17 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Test
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: xcodebuild test -project ColorKit/ColorKit.xcodeproj -scheme ColorKit -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 11"
