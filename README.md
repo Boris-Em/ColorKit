@@ -24,6 +24,8 @@ let dominantColors = try image.dominantColors()
     <img src="Assets/dominant_colors.jpg">
 </p>
 
+By default, **ColorKit** uses an iterative process to determine the dominant colors of an image. But it also supports doing so via a [k-mean clustering algorithm](https://en.wikipedia.org/wiki/K-means_clustering). Choose whichever is more appropriate for your use case.
+
 ---
 
 ### Average Color
