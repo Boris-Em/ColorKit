@@ -136,3 +136,7 @@ Alternatively, you can also use XCode to add **ColorKit** to your existing proje
 ### Manually
 
 **ColorKit** can also be added to your project manually. Download the **ColorKit** project from Github, them drag and drop the folder `ColorKit/ColorKit` into your XCode project.
+
+## License
+
+See the [License](https://github.com/Boris-Em/ColorKit/blob/master/LICENSE). You are free to make changes and use this in either personal or commercial projects. Attribution is not required, but highly appreciated. A little "Thanks!" (or something to that affect) is always welcome. If you use **ColorKit** in one of your projects, please let us know!
