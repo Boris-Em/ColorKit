@@ -21,6 +21,8 @@
 - [Contributing](#contributing)
 - [License](#license)
 
+</br>
+
 ## Features
 
 ### Dominant Colors
@@ -129,6 +131,8 @@ let relativeLuminance = UIColor.green.relativeLuminance
 let complementaryColor = UIColor.green.complementaryColor
 ```
 
+</br>
+
 ## Installation
 
 ### Swift Package Manager
@@ -146,6 +150,16 @@ Alternatively, you can also use XCode to add **ColorKit** to your existing proje
 ### Manually
 
 **ColorKit** can also be added to your project manually. Download the **ColorKit** project from Github, them drag and drop the folder `ColorKit/ColorKit` into your XCode project.
+
+</br>
+
+## Contributing
+
+Contributions to **ColorKit** are always welcome!   
+For bugs and feature requests, open an [issue](https://github.com/Boris-Em/ColorKit/issues/new).  
+To contribute to the code base, simply submit a [pull request](https://github.com/Boris-Em/ColorKit/pulls).
+
+</br>
 
 ## License
 
