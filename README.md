@@ -118,3 +118,21 @@ let relativeLuminance = UIColor.green.relativeLuminance
 ```swift
 let complementaryColor = UIColor.green.complementaryColor
 ```
+
+## Installation
+
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is the easiest way to install and manage **ColorKit** as a dependecy.  
+Simply add **ColorKit** to your dependencies in your `Package.swift` file:
+```swift
+dependencies: [
+    .package(url: "https://github.com/Boris-Em/ColorKit.git")
+]
+```
+
+Alternatively, you can also use XCode to add **ColorKit** to your existing project, by using `File > Swift Packages > Add Package Dependency...`.
+
+### Manually
+
+**ColorKit** can also be added to your project manually. Download the **ColorKit** project from Github, them drag and drop the folder `ColorKit/ColorKit` into your XCode project.
