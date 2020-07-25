@@ -4,7 +4,17 @@
 
 **ColorKit** is your companion to work with colors on iOS.
 
-![Test](https://github.com/Boris-Em/ColorKit/workflows/Test/badge.svg?branch=master)
+<p align="center">
+    <a href="LICENSE">
+        <img src="https://github.com/Boris-Em/ColorKit/workflows/Test/badge.svg?branch=master" alt="Build">
+    </a>
+    <a href="LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="MIT License">
+    </a>
+    <a href="https://swift.org">
+        <img src="https://img.shields.io/badge/swift-5.1-brightgreen.svg" alt="Swift 5.1">
+    </a>
+</p>
 
 - [Features](#features)
 - [Installation](#installation)
