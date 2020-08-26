@@ -40,6 +40,22 @@ By default, **ColorKit** uses an iterative process to determine the dominant col
 
 ---
 
+### Color Palette
+**ColorKit** lets you generate color palettes from a collection of colors. It will automatically ensure that the best colors are picked based on a few configurable parameters like contrast ratio.  
+This feature is particularly powerful when combined with the dominant color calculation.
+
+```swift
+let colors = try image.dominantColors()
+let palette = ColorPalette(orderedColors: colors ignoreContrastRatio: true)
+```
+The following examples use the palette to dynamically match the color of the text and background to the album covers.
+
+<p align="center">
+    <img src="Assets/color_palette_albums.jpg">
+</p>
+
+---
+
 ### Average Color
 
 To compute the average color of an image, simply call the `averageColor` function on a `UIImage` instance.
