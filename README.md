@@ -18,6 +18,7 @@
 
 - [Features](#features)
 - [Installation](#installation)
+- [Sample Project](#sample-project)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -134,7 +135,7 @@ Here is a short list of examples:
 let hexValue = UIColor.green.hex
 let color = UIColor(hex: "eb4034")
 ```
-- Generating random colors.
+- Generating random colors
 ```swift
 let randomColor = UIColor.random()
 ```
@@ -142,7 +143,7 @@ let randomColor = UIColor.random()
 ```swift
 let relativeLuminance = UIColor.green.relativeLuminance
 ```
-- Calculating complementary colors
+- Generating complementary colors
 ```swift
 let complementaryColor = UIColor.green.complementaryColor
 ```
@@ -165,7 +166,13 @@ Alternatively, you can also use XCode to add **ColorKit** to your existing proje
 
 ### Manually
 
-**ColorKit** can also be added to your project manually. Download the **ColorKit** project from Github, them drag and drop the folder `ColorKit/ColorKit` into your XCode project.
+**ColorKit** can also be added to your project manually. Download the **ColorKit** project from Github, then drag and drop the folder `ColorKit/ColorKit` into your XCode project.
+
+</br>
+
+## Sample Project
+
+Use the iOS sample project included in this repository to find comprehensive examples of the different features of **ColorKit**.
 
 </br>
 
