@@ -48,6 +48,7 @@
 		A192B23524839A2F005BC955 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A192B23324839A2F005BC955 /* LaunchScreen.storyboard */; };
 		A1A0978724B324B3009BAB08 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0978624B324B3009BAB08 /* ColorPalette.swift */; };
 		A1A0978924B327CA009BAB08 /* PaletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A0978824B327CA009BAB08 /* PaletteTests.swift */; };
+		A1A19F9A24F6C09400F5C1D8 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A19F9924F6C09400F5C1D8 /* PaletteViewController.swift */; };
 		A1BC6935241C328400E53FB9 /* RelativeLuminance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC6934241C328400E53FB9 /* RelativeLuminance.swift */; };
 		A1BC6937241C335B00E53FB9 /* RelativeLuminanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */; };
 		A1BC6939241C372600E53FB9 /* ContrastRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BC6938241C372600E53FB9 /* ContrastRatio.swift */; };
@@ -142,6 +143,7 @@
 		A192B23624839A2F005BC955 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A0978624B324B3009BAB08 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		A1A0978824B327CA009BAB08 /* PaletteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteTests.swift; sourceTree = "<group>"; };
+		A1A19F9924F6C09400F5C1D8 /* PaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
 		A1BC6934241C328400E53FB9 /* RelativeLuminance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeLuminance.swift; sourceTree = "<group>"; };
 		A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelativeLuminanceTests.swift; sourceTree = "<group>"; };
 		A1BC6938241C372600E53FB9 /* ContrastRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrastRatio.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				A192B22A24839A2D005BC955 /* SceneDelegate.swift */,
 				A192B22C24839A2D005BC955 /* ImageColorsViewController.swift */,
 				A140DC2724C251F900CD8AA7 /* ColorDetailViewController.swift */,
+				A1A19F9924F6C09400F5C1D8 /* PaletteViewController.swift */,
 				A192B22E24839A2D005BC955 /* Main.storyboard */,
 				A192B23124839A2F005BC955 /* Assets.xcassets */,
 				A192B23324839A2F005BC955 /* LaunchScreen.storyboard */,
@@ -504,6 +507,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A192B22D24839A2D005BC955 /* ImageColorsViewController.swift in Sources */,
+				A1A19F9A24F6C09400F5C1D8 /* PaletteViewController.swift in Sources */,
 				A192B22924839A2D005BC955 /* AppDelegate.swift in Sources */,
 				A192B22B24839A2D005BC955 /* SceneDelegate.swift in Sources */,
 				A140DC2824C251F900CD8AA7 /* ColorDetailViewController.swift in Sources */,
