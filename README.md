@@ -114,7 +114,7 @@ To calculate the contrast ratio between two colors, simply use the `contrastRati
 let contrastRatio = UIColor.green.contrastRatio(with: UIColor.white)
 ```
 The contrast ratio is particularly important when displaying text.
-To ensure that it's readable by everyone, **ColorKit** makes it easy for you to follow the accessibility guidelines set by WCAG 2.
+To ensure that it's readable by everyone, **ColorKit** makes it easy for you to follow the accessibility guidelines set by [WCAG 2](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-visual-audio-contrast-contrast).
 
 ---
 
