@@ -47,7 +47,7 @@ This feature is particularly powerful when combined with the dominant color calc
 
 ```swift
 let colors = try image.dominantColors()
-let palette = ColorPalette(orderedColors: colors ignoreContrastRatio: true)
+let palette = ColorPalette(orderedColors: colors, ignoreContrastRatio: true)
 ```
 The following examples use the palette to dynamically match the color of the text and background to the album covers.
 
