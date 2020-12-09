@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A10C0C83249E18BB00A321A5 /* CMYK.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10C0C82249E18BB00A321A5 /* CMYK.swift */; };
 		A10C0C85249E1AA700A321A5 /* CMYKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10C0C84249E1AA700A321A5 /* CMYKTests.swift */; };
+		A121A8A72581717B0005B702 /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121A8A62581717B0005B702 /* Name.swift */; };
+		A121A8AD258177FD0005B702 /* NameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A121A8AC258177FD0005B702 /* NameTests.swift */; };
 		A140DC2824C251F900CD8AA7 /* ColorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A140DC2724C251F900CD8AA7 /* ColorDetailViewController.swift */; };
 		A14F98622422776A001E727C /* ComplementaryColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14F98612422776A001E727C /* ComplementaryColor.swift */; };
 		A14F9864242277D7001E727C /* ComplementaryColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14F9863242277D7001E727C /* ComplementaryColorTests.swift */; };
@@ -98,6 +100,8 @@
 /* Begin PBXFileReference section */
 		A10C0C82249E18BB00A321A5 /* CMYK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMYK.swift; sourceTree = "<group>"; };
 		A10C0C84249E1AA700A321A5 /* CMYKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMYKTests.swift; sourceTree = "<group>"; };
+		A121A8A62581717B0005B702 /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
+		A121A8AC258177FD0005B702 /* NameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameTests.swift; sourceTree = "<group>"; };
 		A140DC2724C251F900CD8AA7 /* ColorDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorDetailViewController.swift; sourceTree = "<group>"; };
 		A14F98612422776A001E727C /* ComplementaryColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementaryColor.swift; sourceTree = "<group>"; };
 		A14F9863242277D7001E727C /* ComplementaryColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplementaryColorTests.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				A181C8962406D7A90008D4B7 /* Lab.swift */,
 				A181C89A2407F5340008D4B7 /* Hex.swift */,
 				A1FDCB7A2461F16400741DD6 /* Random.swift */,
+				A121A8A62581717B0005B702 /* Name.swift */,
 				A1BC6934241C328400E53FB9 /* RelativeLuminance.swift */,
 				A1BC6938241C372600E53FB9 /* ContrastRatio.swift */,
 				A14F98612422776A001E727C /* ComplementaryColor.swift */,
@@ -242,6 +247,7 @@
 				A1BC6936241C335B00E53FB9 /* RelativeLuminanceTests.swift */,
 				A1BC693A241C39D600E53FB9 /* ContrastRatioTests.swift */,
 				A14F9863242277D7001E727C /* ComplementaryColorTests.swift */,
+				A121A8AC258177FD0005B702 /* NameTests.swift */,
 				A1C4509F246EC5BE001EC796 /* AverageColorTests.swift */,
 				A16BA21E2473E6DE00E4E826 /* DominantColorsTests.swift */,
 				A192B20A248260BC005BC955 /* DominantColorQualityTests.swift */,
@@ -468,6 +474,7 @@
 				A1FDCB7B2461F16400741DD6 /* Random.swift in Sources */,
 				A181C87C240480620008D4B7 /* XYZ.swift in Sources */,
 				A10C0C83249E18BB00A321A5 /* CMYK.swift in Sources */,
+				A121A8A72581717B0005B702 /* Name.swift in Sources */,
 				A1A0978724B324B3009BAB08 /* ColorPalette.swift in Sources */,
 				A14F98622422776A001E727C /* ComplementaryColor.swift in Sources */,
 				A1BC6939241C372600E53FB9 /* ContrastRatio.swift in Sources */,
@@ -498,6 +505,7 @@
 				A181C87A2404796F0008D4B7 /* ComparisonTests.swift in Sources */,
 				A181C8952406D4890008D4B7 /* CGFloatExtensionsTests.swift in Sources */,
 				A181C878240477AD0008D4B7 /* RGBTests.swift in Sources */,
+				A121A8AD258177FD0005B702 /* NameTests.swift in Sources */,
 				A1A0978924B327CA009BAB08 /* PaletteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
