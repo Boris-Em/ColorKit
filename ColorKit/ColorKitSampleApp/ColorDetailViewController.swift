@@ -14,6 +14,7 @@ class ColorDetailViewController: UITableViewController {
     var color: UIColor!
     
     @IBOutlet weak var colorView: UIView!
+    @IBOutlet weak var colorNameLabel: UILabel!
     @IBOutlet weak var rgbLabel: UILabel!
     @IBOutlet weak var hexLabel: UILabel!
     @IBOutlet weak var cielabLabel: UILabel!
@@ -26,6 +27,7 @@ class ColorDetailViewController: UITableViewController {
         super.viewDidLoad()
         
         colorView.backgroundColor = color
+        colorNameLabel.text = "Name: \(color.name())"
         rgbLabel.text = String(format: "Red: %.2f Green: %.2f Blue: %.2f", color.red, color.green, color.blue)
         hexLabel.text = "Hex: \(color.hex)"
         cielabLabel.text = "CIE L: \(color.L) a: \(color.a) b: \(color.b)"

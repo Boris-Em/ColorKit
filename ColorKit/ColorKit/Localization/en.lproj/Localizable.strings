@@ -1,0 +1,37 @@
+/* 
+  ColorNames.strings
+  ColorKit
+
+  Created by Boris Emorine on 12/11/20.
+  Copyright © 2020 BorisEmorine. All rights reserved.
+*/
+
+"colorkit.color.name.primary.red" = "red";
+
+"colorkit.color.name.primary.green" = "green";
+
+"colorkit.color.name.primary.blue" = "blue";
+
+"colorkit.color.name.secondary.yellow" = "yellow";
+
+"colorkit.color.name.secondary.magenta" = "magenta";
+
+"colorkit.color.name.secondary.cyan" = "cyan";
+
+"colorkit.color.name.tertiary.azure" = "azure";
+
+"colorkit.color.name.tertiary.violet" = "violet";
+
+"colorkit.color.name.tertiary.rose" = "rose";
+
+"colorkit.color.name.tertiary.orange" = "orange";
+
+"colorkit.color.name.tertiary.chartreuse" = "chartreuse";
+
+"colorkit.color.name.tertiary.spring_green" = "spring green";
+
+"colorkit.color.name.gray_shade.black" = "black";
+
+"colorkit.color.name.gray_shade.white" = "white";
+
+"colorkit.color.name.gray_shade.gray" = "gray";
