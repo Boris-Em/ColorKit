@@ -87,7 +87,7 @@ public struct ColorPalette {
     ///   - colors: The colors that will be used to generate the color palette. The best colors will be selected to have a color palette with enough contrast. At least two colors should be passed in.
     ///   - darkBackground: Whether the color palette is required to have a dark background. If set to false, the background can be dark or bright.
     ///   - ignoreContrastRatio: Whether the color paletter should ignore the contrast ratio between the different colors. It is recommended to set this value to `false` (default) if the color paletter will be used to display text.
-    public init(colors: [UIColor], darkBackground: Bool = true, ignoreContrastRatio: Bool = false) {
+    public init?(colors: [UIColor], darkBackground: Bool = true, ignoreContrastRatio: Bool = false) {
         guard colors.count > 1 else {
             return nil
         }
