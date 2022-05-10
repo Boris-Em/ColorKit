@@ -96,20 +96,21 @@ public struct ColorPalette {
         var brightestColor: UIColor?
         
         colors.forEach { (color) in
-            if color.relativeLuminance < darkestColor?.relativeLuminance ?? CGFloat.greatestFiniteMagnitude {
+            if color.relativeLuminance < darkestColor?.relativeLuminance ?? .greatestFiniteMagnitude {
                 darkestColor = color
             }
             
-            if color.relativeLuminance > brightestColor?.relativeLuminance ?? CGFloat.leastNormalMagnitude {
+            if color.relativeLuminance > brightestColor?.relativeLuminance ?? .leastNormalMagnitude {
                 brightestColor = color
             }
         }
-        
-        var backgroundColor: UIColor!
-        var primaryColor: UIColor!
+        guard let darkestColor = darkestColor,
+              let brightestColor = brightestColor else {
+            return nil
+        }
         
         if !ignoreContrastRatio {
-            let backgroundPrimaryContrastRatio = darkestColor!.contrastRatio(with: brightestColor!)
+            let backgroundPrimaryContrastRatio = darkestColor.contrastRatio(with: brightestColor)
             switch backgroundPrimaryContrastRatio {
             case .acceptable, .acceptableForLargeText:
                 break
@@ -118,13 +119,8 @@ public struct ColorPalette {
             }
         }
         
-        if darkBackground {
-            backgroundColor = darkestColor!
-            primaryColor = brightestColor!
-        } else {
-            backgroundColor = brightestColor!
-            primaryColor = darkestColor!
-        }
+        let backgroundColor = darkBackground ? darkestColor : brightestColor
+        let primaryColor = darkBackground ? brightestColor : darkestColor
         
         let secondaryColor = colors.first { (color) -> Bool in
             if !ignoreContrastRatio {
