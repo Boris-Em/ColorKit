@@ -156,7 +156,7 @@ extension UIImage {
                 let index = (cgImage.width * yCoordonate + xCoordonate) * 4
                 
                 // Let's make sure there is enough alpha.
-                guard data[index + 3] > 150 else { continue }
+                guard Int(targetSize.area) * 4 > index + 3, data[index + 3] > 150 else { continue }
                 
                 let pixelColor = RGB(R: data[index + 0], G: data[index + 1], B:  data[index + 2])
                 colorsCountedSet.add(pixelColor)
