@@ -135,6 +135,7 @@ extension UIImage {
         }
         
         let cfData = cgImage.dataProvider!.data
+        let cfLength = CFDataGetLength(cfData)
         guard let data = CFDataGetBytePtr(cfData) else {
             throw ImageColorError.cgImageDataFailure
         }
@@ -156,6 +157,9 @@ extension UIImage {
                 let index = (cgImage.width * yCoordonate + xCoordonate) * 4
                 
                 // Let's make sure there is enough alpha.
+                if cfLength <= index + 3 {
+                    break
+                }
                 if data[index + 3] <= 150 {
                     continue
                 }
