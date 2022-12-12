@@ -27,7 +27,7 @@ extension UIColor {
         case 6: // 0xRRGGBB
             (a, r, g, b) = (255, hexValue >> 16, hexValue >> 8 & 0xFF, hexValue & 0xFF)
         case 8: // 0xRRGGBBAA
-            (a, r, g, b) = (hexValue >> 24, hexValue >> 16 & 0xFF, hexValue >> 8 & 0xFF, hexValue & 0xFF)
+            (r, g, b, a) = (hexValue >> 24, hexValue >> 16 & 0xFF, hexValue >> 8 & 0xFF, hexValue & 0xFF)
         default:
             (a, r, g, b) = (255, 0, 0, 0)
         }
