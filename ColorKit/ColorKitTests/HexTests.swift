@@ -15,6 +15,7 @@ class HexTests: XCTestCase {
     private let whiteHex = "#ffffff"
     private let redHex = "#ff0000"
     private let darkGreen = "#32a852"
+    private let lightGreen = "#43ff64d9"
 
     // Init
     
@@ -48,6 +49,14 @@ class HexTests: XCTestCase {
         XCTAssertEqual(color.green, 168.0 / 255.0)
         XCTAssertEqual(color.blue, 82.0 / 255.0)
         XCTAssertEqual(color.alpha, 1)
+    }
+    
+    func testInitLightGreen() {
+        let color = UIColor(hex: lightGreen)!
+        XCTAssertEqual(color.red, 67.0 / 255.0)
+        XCTAssertEqual(color.green, 255.0 / 255.0)
+        XCTAssertEqual(color.blue, 100.0 / 255.0)
+        XCTAssertEqual(color.alpha, 0.85, accuracy: 0.001)
     }
     
     // hex
