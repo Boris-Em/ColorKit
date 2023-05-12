@@ -164,6 +164,7 @@ extension UIImage {
 
         let pixelBuf: UnsafeBufferPointer<Pixel> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
         pixelBuf.forEach {
+            guard $0.a > 150 else { return }
             let pixelColor: RGB = .init(R: $0.r, G: $0.g, B: $0.b)
             colorsCountedSet.add(pixelColor)
         }
