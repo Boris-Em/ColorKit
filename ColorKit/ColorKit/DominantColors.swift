@@ -151,16 +151,21 @@ extension UIImage {
             let B: UInt8
         }
 
-        for yCoordonate in 0 ..< cgImage.height {
-            for xCoordonate in 0 ..< cgImage.width {
-                let index = (cgImage.width * yCoordonate + xCoordonate) * 4
-                
-                // Let's make sure there is enough alpha.
-                guard data[index + 3] > 150 else { continue }
-                
-                let pixelColor = RGB(R: data[index + 0], G: data[index + 1], B:  data[index + 2])
-                colorsCountedSet.add(pixelColor)
-            }
+        struct Pixel {
+            let r: UInt8
+            let g: UInt8
+            let b: UInt8
+            let a: UInt8
+        }
+
+        guard let pixelPtr = UnsafeRawPointer(data)?.bindMemory(to: Pixel.self, capacity: 1) else {
+            throw ImageColorError.cgImageDataFailure
+        }
+
+        let pixelBuf: UnsafeBufferPointer<Pixel> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
+        pixelBuf.forEach {
+            let pixelColor: RGB = .init(R: $0.r, G: $0.g, B: $0.b)
+            colorsCountedSet.add(pixelColor)
         }
         
         // ------
