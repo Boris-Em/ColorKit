@@ -152,7 +152,7 @@ extension UIImage {
             rowBytes: rowBytes,
             bounds: ciImage.extent,
             format: .RGBA8,
-            colorSpace: nil)
+            colorSpace: ciImage.colorSpace)
         
         // ------
         // Step 3: Add each pixel to a NSCountedSet. This will give us a count for each color.
