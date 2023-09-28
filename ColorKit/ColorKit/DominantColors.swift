@@ -134,13 +134,28 @@ extension UIImage {
             throw ImageColorError.cgImageFailure
         }
         
-        let cfData = cgImage.dataProvider!.data
-        guard let data = CFDataGetBytePtr(cfData) else {
-            throw ImageColorError.cgImageDataFailure
-        }
+        // ------
+        // Step 2: Convert the image to RGBA8 data using CIImage
+        // ------
+        
+        let ciImage = CIImage(cgImage: cgImage)
+        let imageWidth = Int(ciImage.extent.width)
+        let imageHeight = Int(ciImage.extent.height)
+        
+        let ciContext = CIContext()
+        let rowBytes = 4 * imageWidth
+        let dataSize = rowBytes * imageHeight
+        var data = [UInt8](repeating: 0, count: dataSize)
+        ciContext.render(
+            ciImage,
+            toBitmap: &data,
+            rowBytes: rowBytes,
+            bounds: ciImage.extent,
+            format: .RGBA8,
+            colorSpace: ciImage.colorSpace)
         
         // ------
-        // Step 2: Add each pixel to a NSCountedSet. This will give us a count for each color.
+        // Step 3: Add each pixel to a NSCountedSet. This will give us a count for each color.
         // ------
         
         let colorsCountedSet = NSCountedSet(capacity: Int(targetSize.area))
@@ -151,9 +166,9 @@ extension UIImage {
             let B: UInt8
         }
 
-        for yCoordonate in 0 ..< cgImage.height {
-            for xCoordonate in 0 ..< cgImage.width {
-                let index = (cgImage.width * yCoordonate + xCoordonate) * 4
+        for yCoordonate in 0 ..< imageHeight {
+            for xCoordonate in 0 ..< imageWidth {
+                let index = (imageWidth * yCoordonate + xCoordonate) * 4
                 
                 // Let's make sure there is enough alpha.
                 guard data[index + 3] > 150 else { continue }
@@ -164,7 +179,7 @@ extension UIImage {
         }
         
         // ------
-        // Step 3: Remove colors that are barely present on the image.
+        // Step 4: Remove colors that are barely present on the image.
         // ------
 
         let minCountThreshold = Int(targetSize.area * (0.01 / 100.0))
@@ -182,7 +197,7 @@ extension UIImage {
         }
         
         // ------
-        // Step 4: Sort the remaning colors by frequency.
+        // Step 5: Sort the remaning colors by frequency.
         // ------
         
         let sortedColorsFrequencies = filteredColorsCountMap.sorted { (lhs, rhs) -> Bool in
@@ -190,14 +205,14 @@ extension UIImage {
         }
         
         // ------
-        // Step 5: Only keep the most frequent colors.
+        // Step 6: Only keep the most frequent colors.
         // ------
         
         let maxNumberOfColors = 500
         let colorFrequencies = sortedColorsFrequencies.prefix(maxNumberOfColors)
         
         // ------
-        // Step 6: Combine similar colors together.
+        // Step 7: Combine similar colors together.
         // ------
         
         /// The main dominant colors on the picture.
@@ -226,7 +241,7 @@ extension UIImage {
         }
         
         // ------
-        // Step 7: Again, limit the number of colors we keep, this time drastically.
+        // Step 8: Again, limit the number of colors we keep, this time drastically.
         // ------
         
         // We only keep the first few dominant colors.
@@ -234,7 +249,7 @@ extension UIImage {
         dominantColors = Array(dominantColors.prefix(dominantColorsMaxCount))
         
         // ------
-        // Step 8: Sort again on frequencies because the order may have changed because we combined colors.
+        // Step 9: Sort again on frequencies because the order may have changed because we combined colors.
         // ------
         
         dominantColors = dominantColors.sorted(by: { (lhs, rhs) -> Bool in
@@ -242,7 +257,7 @@ extension UIImage {
         })
         
         // ------
-        // Step 9: Calculate the frequency of colors as a percentage.
+        // Step 10: Calculate the frequency of colors as a percentage.
         // ------
         
         /// The total count of colors
