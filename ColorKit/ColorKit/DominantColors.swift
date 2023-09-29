@@ -158,6 +158,27 @@ extension UIImage {
             let a: UInt8
         }
 
+        struct PixelARGB {
+            let a: UInt8
+            let r: UInt8
+            let g: UInt8
+            let b: UInt8
+        }
+
+        struct PixelRGBX {
+            let r: UInt8
+            let g: UInt8
+            let b: UInt8
+            let x: UInt8
+        }
+
+        struct PixelXRGB {
+            let x: UInt8
+            let r: UInt8
+            let g: UInt8
+            let b: UInt8
+        }
+
         struct PixelMonochrome {
             let w: UInt8
             let a: UInt8
@@ -174,14 +195,50 @@ extension UIImage {
                 colorsCountedSet.add(pixelColor)
             }
         } else if cgImage.colorSpace?.model == .rgb {
-            guard let pixelPtr = UnsafeRawPointer(data)?.bindMemory(to: PixelRGBA.self, capacity: 1) else {
-                throw ImageColorError.cgImageDataFailure
-            }
-            let pixelBuf: UnsafeBufferPointer<PixelRGBA> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
-            pixelBuf.forEach {
-                guard $0.a > 150 else { return }
-                let pixelColor: RGB = .init(R: $0.r, G: $0.g, B: $0.b)
-                colorsCountedSet.add(pixelColor)
+            switch cgImage.alphaInfo {
+            case .premultipliedLast, .last:
+                guard let pixelPtr = UnsafeRawPointer(data)?.bindMemory(to: PixelRGBA.self, capacity: 1) else {
+                    throw ImageColorError.cgImageDataFailure
+                }
+                let pixelBuf: UnsafeBufferPointer<PixelRGBA> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
+                pixelBuf.forEach {
+                    let pixelColor: RGB = .init(R: $0.r, G: $0.g, B: $0.b)
+                    colorsCountedSet.add(pixelColor)
+                }
+            case .premultipliedFirst, .first:
+                guard let pixelPtr = UnsafeRawPointer(data)?.bindMemory(to: PixelARGB.self, capacity: 1) else {
+                    throw ImageColorError.cgImageDataFailure
+                }
+                let pixelBuf: UnsafeBufferPointer<PixelARGB> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
+                pixelBuf.forEach {
+                    guard $0.a > 150 else { return }
+                    let pixelColor: RGB = .init(R: $0.r, G: $0.g, B: $0.b)
+                    colorsCountedSet.add(pixelColor)
+                }
+            case .noneSkipLast:
+                guard let pixelPtr = UnsafeRawPointer(data)?.bindMemory(to: PixelRGBX.self, capacity: 1) else {
+                    throw ImageColorError.cgImageDataFailure
+                }
+                let pixelBuf: UnsafeBufferPointer<PixelRGBX> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
+                pixelBuf.forEach {
+                    let pixelColor: RGB = .init(R: $0.r, G: $0.g, B: $0.b)
+                    colorsCountedSet.add(pixelColor)
+                }
+            case .noneSkipFirst:
+                guard let pixelPtr = UnsafeRawPointer(data)?.bindMemory(to: PixelXRGB.self, capacity: 1) else {
+                    throw ImageColorError.cgImageDataFailure
+                }
+                let pixelBuf: UnsafeBufferPointer<PixelXRGB> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
+                pixelBuf.forEach {
+                    let pixelColor: RGB = .init(R: $0.r, G: $0.g, B: $0.b)
+                    colorsCountedSet.add(pixelColor)
+                }
+            default:
+                guard let pixelPtr = UnsafeRawPointer(data)?.bindMemory(to: RGB.self, capacity: 1) else {
+                    throw ImageColorError.cgImageDataFailure
+                }
+                let pixelBuf: UnsafeBufferPointer<RGB> = .init(start: pixelPtr, count: cgImage.width * cgImage.height)
+                pixelBuf.forEach { colorsCountedSet.add($0) }
             }
         } else {
             return []
