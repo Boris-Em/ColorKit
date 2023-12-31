@@ -30,7 +30,7 @@ extension UIColor {
         /// The two colors are more opposite than similar.
         case far(CGFloat)
         
-        init(value: CGFloat) {
+        public init(value: CGFloat) {
             if value == 0 {
                 self = .indentical(value)
             } else if value <= 1.0 {
@@ -46,7 +46,7 @@ extension UIColor {
             }
         }
         
-        var associatedValue: CGFloat {
+        public var associatedValue: CGFloat {
             switch self {
             case .indentical(let value),
                  .similar(let value),
